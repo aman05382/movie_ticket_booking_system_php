@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 06:18 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Nov 21, 2020 at 02:19 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bookingtable` (
   `bookingID` int(11) NOT NULL,
-  `movieName` varchar(100) DEFAULT NULL,
+  `movieID` int(11) DEFAULT NULL,
   `bookingTheatre` varchar(100) NOT NULL,
   `bookingType` varchar(100) DEFAULT NULL,
   `bookingDate` varchar(50) NOT NULL,
@@ -44,11 +45,12 @@ CREATE TABLE `bookingtable` (
 -- Dumping data for table `bookingtable`
 --
 
-INSERT INTO `bookingtable` (`bookingID`, `movieName`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `ORDERID`) VALUES
-(22, 'The Lego Movie', 'vip-hall', 'imax', '13-3', '18-00', 'Kareem', 'Ahmed', '01589965', ''),
-(23, 'Nadi Elregal Elserri ', 'main-hall', '3d', '12-3', '18-00', 'madhulata', 'sharma', '09561820631', ''),
-(24, 'The Lego Movie', 'main-hall', '3d', '13-3', '15-00', 'Aman', 'Sharma', '09404977186', ''),
-(25, 'Nadi Elregal Elserri ', 'vip-hall', '3d', '13-3', '15-00', 'dd', 'dd', 'dd', '');
+INSERT INTO `bookingtable` (`bookingID`, `movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `ORDERID`) VALUES
+(22, 0, 'vip-hall', 'imax', '13-3', '18-00', 'Kareem', 'Ahmed', '01589965', ''),
+(23, 0, 'main-hall', '3d', '12-3', '18-00', 'madhulata', 'sharma', '09561820631', ''),
+(24, 0, 'main-hall', '3d', '13-3', '15-00', 'Aman', 'Sharma', '09404977186', ''),
+(25, 0, 'vip-hall', '3d', '13-3', '15-00', 'dd', 'dd', 'dd', ''),
+(26, 0, '', '', '', '', '', '', '', 'ORD49092896');
 
 -- --------------------------------------------------------
 
@@ -106,29 +108,6 @@ INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `mo
 (12, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
 (13, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
 (14, 'img/', 'aman', 'dcdc', 4, '2020-11-29', 'cc', 'cc', 500, 900, 1500);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `ORDERID` varchar(255) NOT NULL,
-  `MID` varchar(255) NOT NULL,
-  `TXNID` varchar(255) NOT NULL,
-  `TXNAMOUNT` varchar(255) NOT NULL,
-  `PAYMENTMODE` varchar(255) NOT NULL,
-  `CURRENCY` varchar(255) NOT NULL,
-  `TXNDATE` varchar(255) NOT NULL,
-  `STATUS` varchar(255) NOT NULL,
-  `RESPCODE` varchar(255) NOT NULL,
-  `RESPMSG` varchar(255) NOT NULL,
-  `GATEWAYNAME` varchar(255) NOT NULL,
-  `BANKTXNID` varchar(255) NOT NULL,
-  `BANKNAME` varchar(255) NOT NULL,
-  `CHECKSUMHASH` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,7 +171,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `feedbacktable`

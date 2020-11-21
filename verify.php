@@ -9,20 +9,20 @@ $theatre = $_POST['theatre'];
 $type = $_POST['type'];
 $date = $_POST['date'];
 $time = $_POST['hour'];
-// $title = $_POST[''];
+$movieid = $_POST['movie_id'];
 $order = "ORD" . rand(10000, 99999999);
 $cust  = "CUST" . rand(1000, 999999);
 
-
+$_SESSION['MOVIEID'] = $movieid;
 $_SESSION['FNAME'] = $fname;
 $_SESSION['LNAME'] = $lname;
 $_SESSION['EMAIL'] = $email;
 $_SESSION['MOBILE'] = $mobile;
 $_SESSION['THEATRE'] = $theatre;
-$_SESSION['TYPE'] = $type;
-$_SESSION['DATE'] = $date;
-$_SESSION['TIME'] = $time;
-
+$_SESSION['BOOKING_TYPE'] = $type;
+$_SESSION['BOOKING_DATE'] = $date;
+$_SESSION['BOOKING_TIME'] = $time;
+$_SESSION['ORDERID'] = $order;
 ?>
 <!doctype html>
 <html lang="en">
