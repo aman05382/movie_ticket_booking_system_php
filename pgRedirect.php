@@ -6,6 +6,8 @@ header("Expires: 0");
 require_once("./lib/config_paytm.php");
 require_once("./lib/encdec_paytm.php");
 
+
+
 $checkSum = "";
 $paramList = array();
 
@@ -37,6 +39,55 @@ $paramList["IS_USER_VERIFIED"] = "YES"; //
 //Here checksum string will return by getChecksumFromArray() function.
 $checkSum = getChecksumFromArray($paramList,PAYTM_MERCHANT_KEY);
 
+?>
+<?php
+//$id = $_POST['id'];
+$link = mysqli_connect("localhost", "root", "", "cinema_db");
+
+//$movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
+//$movieImageById = mysqli_query($link, $movieQuery);
+//$row = mysqli_fetch_array($movieImageById,TRUE);
+?>
+<?php
+    $fNameErr = $pNumberErr = "";
+	$fName = $pNumber = "";
+	if (isset($_POST['submit'])) {
+
+
+		$fName = $_POST['fName'];
+		if (!preg_match('/^[a-zA-Z0-9\s]+$/', $fName)) {
+			$fNameErr = 'Name can only contain letters, numbers and white spaces';
+			echo "<script type='text/javascript'>alert('$fNameErr');</script>";
+		}
+
+		$pNumber = $_POST['pNumber'];
+		if (preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $pNumber)) {
+			$pNumberErr = 'Phone Number can only contain numbers and white spaces';
+			echo "<script type='text/javascript'>alert('$pNumberErr');</script>";
+		}
+
+		$insert_query = "INSERT INTO 
+		bookingTable (  movieName,
+						bookingTheatre,
+						bookingType,
+						bookingDate,
+						bookingTime,
+						bookingFName,
+						bookingLName,
+						bookingPNumber)
+		VALUES (        '" . $_POST["movietitle"] . "',
+						'" . $_POST["theatre"] . "',
+						'" . $_POST["type"] . "',
+						'" . $_POST["date"] . "',
+						'" . $_POST["hour"] . "',
+						'" . $_POST["fName"] . "',
+						'" . $_POST["lName"] . "',
+						'" . $_POST["pNumber"] . "')";
+		mysqli_query($link, $insert_query);
+	}
+                    
+
+                    
 ?>
 <html>
 <head>

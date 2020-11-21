@@ -2,8 +2,9 @@
 	header("Pragma: no-cache");
 	header("Cache-Control: no-cache");
 	header("Expires: 0");
-
+	
 ?>
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,6 +56,7 @@
 						value="1">
 					</td>
 				</tr>
+				
 				<tr>
 					<td></td>
 					<td></td>
