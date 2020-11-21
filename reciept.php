@@ -16,25 +16,23 @@
 	<div id="printableArea">
 		<?php
 		$conn = mysqli_connect("localhost", "root", "");
-		$db = mysqli_select_db($conn, "test");
+		$db = mysqli_select_db($conn, "cinema_db");
 
-		$qry = "select * from users where ORDERID = '" . $_GET['id'] . "'";
+		$qry = "select * from bookingtable where ORDERID = '" . $_GET['id'] . "'";
 
 		$result = mysqli_query($conn, $qry);
 		while ($row = mysqli_fetch_assoc($result)) {
 			echo "<h2>Your Payment is Sucessfull</h2>";
-			echo "Name= " . $row['FNAME'] . "." . $row['LNAME']. "<br>";
-			echo "Email= " . $row['EMAIL'] . "<br>";
-			echo "Mobile= " . $row['MOB'] . "<br>";
+			echo "Name= " . $row['bookingFName'] . "&nbsp;" . $row['bookingLName']. "<br>";
+			echo "Email= " . $row['bookingEmail'] . "<br>";
+			echo "Mobile= " . $row['bookingPNumber'] . "<br>";
 			echo "OrderID= " . $row['ORDERID'] . "<br>";
-			echo "Date=" . $row['TXNDATE'] . "<br>";
-			echo "Amount=" . $row['TXNAMOUNT'] . "<br>";
 		}
 		?>
 	</div>
 	<br>
 	<input type="button" class="btn btn-danger" onclick="printDiv('printableArea')" value="Print Recipt!" />
-	<a type="button" class="btn btn-success" href='http://localhost/Paytm_Payment_Gateway-PHP/'>Home-Page</a>
+	<a type="button" class="btn btn-success" href='http://localhost/Railway_Reservation_System/'>Home-Page</a>
 
 
 

@@ -104,7 +104,7 @@ $row = mysqli_fetch_array($movieImageById);
 
                     <input placeholder="Phone Number" type="text" name="pNumber" required>
                     <input placeholder="email" type="email" name="email" required>
-                    <input type="hidden" name="movie_id" value="<?php echo $id ?>" required>
+                    <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
 
 
 

@@ -40,8 +40,8 @@ if($isValidChecksum == "TRUE") {
 			// $qry = "INSERT INTO `users`(`FNAME`, `LNAME`, `ADDRESS`, `EMAIL`, `MOB`, `EVENTS`, `ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
 			// ('" . $_SESSION['FNAME'] . "','" . $_SESSION['LNAME'] . "','" . $_SESSION['ADDR'] . "','" . $_SESSION['EMAIL'] . "','" . $_SESSION['MOBILENO'] . "','" . $_SESSION['EVENTS'] . "','" . $_POST['ORDERID'] . "','" . $_POST['MID'] . "', '" . $_POST['TXNID'] . "','" . $_POST['TXNAMOUNT'] . "','" . $_POST['PAYMENTMODE'] . "','" . $_POST['CURRENCY'] . "','" . $_POST['TXNDATE'] . "','" . $_POST['STATUS'] . "','" . $_POST['RESPCODE'] . "','" . $_POST['RESPMSG'] . "','" . $_POST['GATEWAYNAME'] . "','" . $_POST['BANKTXNID'] . "','" . $_POST['BANKNAME'] . "','" . $_POST['CHECKSUMHASH'] . "')";
 
-			$qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `ORDERID`) VALUES 
-			('" . $_SESSION['MOVIEID'] . "','" . $_SESSION['THEATRE'] . "','" . $_SESSION['BOOKING_TYPE'] . "','" . $_SESSION['BOOKING_DATE'] . "','" . $_SESSION['BOOKING_TIME'] . "','" . $_SESSION['FNAME'] . "','" . $_SESSION['LNAME'] . "','" . $_POST['MOBILE'] . "', '" . $_POST['ORDERID'] . "')";
+			$qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES 
+			('" . $_SESSION['MOVIEID'] . "','" . $_SESSION['THEATRE'] . "','" . $_SESSION['BOOKING_TYPE'] . "','" . $_SESSION['BOOKING_DATE'] . "','" . $_SESSION['BOOKING_TIME'] . "','" . $_SESSION['FNAME'] . "','" . $_SESSION['LNAME'] . "','" . $_SESSION['MOBILE'] . "','" . $_SESSION['EMAIL'] . "', '" . $_POST['ORDERID'] . "')";
 
 
 			mysqli_query($conn, $qry);
