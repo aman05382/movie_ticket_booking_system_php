@@ -12,9 +12,9 @@
 </head>
 
 <body>
-<?php 
-        $link = mysqli_connect("localhost", "root", "", "cinema_db");
-?>
+    <?php
+    $link = mysqli_connect("localhost", "root", "", "cinema_db");
+    ?>
     <header></header>
     <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=BUE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
     </div>
@@ -24,26 +24,26 @@
             <p>Contact us here </p>
             <form action="" method="POST">
                 <input placeholder="First Name" name="fName" required><br>
-                <input placeholder="Last Name" name="lName" ><br>
+                <input placeholder="Last Name" name="lName"><br>
                 <input placeholder="E-mail Address" name="eMail" required><br>
                 <textarea placeholder="Enter your message !" name="feedback" rows="10" cols="30" required></textarea><br>
                 <button type="submit" name="submit" value="submit">Send your Message</button>
                 <?php
-                    if(isset($_POST['submit'])){
-                        $insert_query = "INSERT INTO 
+                if (isset($_POST['submit'])) {
+                    $insert_query = "INSERT INTO 
                         feedbackTable ( senderfName,
                                         senderlName,
                                         sendereMail,
                                         senderfeedback)
-                        VALUES (        '".$_POST["fName"]."',
-                                        '".$_POST["lName"]."',
-                                        '".$_POST["eMail"]."',
-                                        '".$_POST["feedback"]."')";
-                        mysqli_query($link,$insert_query);
-                        }
-                    ?>
+                        VALUES (        '" . $_POST["fName"] . "',
+                                        '" . $_POST["lName"] . "',
+                                        '" . $_POST["eMail"] . "',
+                                        '" . $_POST["feedback"] . "')";
+                    mysqli_query($link, $insert_query);
+                }
+                ?>
             </form>
-            
+
         </div>
         <div class="contact-us-section contact-us-section2">
             <h1>Address & Info</h1>

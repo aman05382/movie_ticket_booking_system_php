@@ -62,7 +62,7 @@ $row = mysqli_fetch_array($movieImageById);
             </div>
             <div class="booking-form-container">
                 <form action="verify.php" method="POST">
-                    
+
 
                     <select name="theatre" required>
                         <option value="" disabled selected>THEATRE</option>
@@ -105,10 +105,10 @@ $row = mysqli_fetch_array($movieImageById);
                     <input placeholder="Phone Number" type="text" name="pNumber" required>
                     <input placeholder="email" type="email" name="email" required>
 
-                    
 
-                    <button type="submit" value="save" name="submit" class="form-btn"  >Book a seat</button>
-                 
+
+                    <button type="submit" value="save" name="submit" class="form-btn">Book a seat</button>
+
                 </form>
             </div>
         </div>

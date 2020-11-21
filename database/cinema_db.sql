@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 11:16 AM
+-- Generation Time: Nov 21, 2020 at 06:18 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -36,17 +36,19 @@ CREATE TABLE `bookingtable` (
   `bookingTime` varchar(50) NOT NULL,
   `bookingFName` varchar(100) NOT NULL,
   `bookingLName` varchar(100) DEFAULT NULL,
-  `bookingPNumber` varchar(12) NOT NULL
+  `bookingPNumber` varchar(12) NOT NULL,
+  `ORDERID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookingtable`
 --
 
-INSERT INTO `bookingtable` (`bookingID`, `movieName`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`) VALUES
-(22, 'The Lego Movie', 'vip-hall', 'imax', '13-3', '18-00', 'Kareem', 'Ahmed', '01589965'),
-(23, 'Nadi Elregal Elserri ', 'main-hall', '3d', '12-3', '18-00', 'madhulata', 'sharma', '09561820631'),
-(24, 'The Lego Movie', 'main-hall', '3d', '13-3', '15-00', 'Aman', 'Sharma', '09404977186');
+INSERT INTO `bookingtable` (`bookingID`, `movieName`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `ORDERID`) VALUES
+(22, 'The Lego Movie', 'vip-hall', 'imax', '13-3', '18-00', 'Kareem', 'Ahmed', '01589965', ''),
+(23, 'Nadi Elregal Elserri ', 'main-hall', '3d', '12-3', '18-00', 'madhulata', 'sharma', '09561820631', ''),
+(24, 'The Lego Movie', 'main-hall', '3d', '13-3', '15-00', 'Aman', 'Sharma', '09404977186', ''),
+(25, 'Nadi Elregal Elserri ', 'vip-hall', '3d', '13-3', '15-00', 'dd', 'dd', 'dd', '');
 
 -- --------------------------------------------------------
 
@@ -104,6 +106,29 @@ INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `mo
 (12, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
 (13, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
 (14, 'img/', 'aman', 'dcdc', 4, '2020-11-29', 'cc', 'cc', 500, 900, 1500);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `ORDERID` varchar(255) NOT NULL,
+  `MID` varchar(255) NOT NULL,
+  `TXNID` varchar(255) NOT NULL,
+  `TXNAMOUNT` varchar(255) NOT NULL,
+  `PAYMENTMODE` varchar(255) NOT NULL,
+  `CURRENCY` varchar(255) NOT NULL,
+  `TXNDATE` varchar(255) NOT NULL,
+  `STATUS` varchar(255) NOT NULL,
+  `RESPCODE` varchar(255) NOT NULL,
+  `RESPMSG` varchar(255) NOT NULL,
+  `GATEWAYNAME` varchar(255) NOT NULL,
+  `BANKTXNID` varchar(255) NOT NULL,
+  `BANKNAME` varchar(255) NOT NULL,
+  `CHECKSUMHASH` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -167,7 +192,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `feedbacktable`
