@@ -61,31 +61,8 @@ $row = mysqli_fetch_array($movieImageById);
                 </table>
             </div>
             <div class="booking-form-container">
-                <form action="pgRedirect.php" method="POST">
-                    <label>ORDER_ID::*</label>
-                    <input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
-						name="ORDER_ID" autocomplete="off"
-                        value="<?php echo  "ORDS" . rand(10000,99999999)?>">
+                <form action="verify.php" method="POST">
                     
-                    <label>CUSTID ::*</label>
-                    <input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001">
-
-                    <label>INDUSTRY_TYPE_ID ::*</label>
-                    <input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
-
-                    <label>Channel ::*</label>
-                    <input id="CHANNEL_ID" tabindex="4" maxlength="12"
-                        size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
-                    
-                    <label>txnAmount*</label>
-                    <input title="TXN_AMOUNT" tabindex="10"
-						type="text" name="TXN_AMOUNT"
-                        value="1">
-                        
-                    <label>Movietitle*</label>
-                    <input title="movietitle" id="movietitle"
-						type="text" name="movietitle"
-                        value="<?php echo $row['movieTitle']; ?>">
 
                     <select name="theatre" required>
                         <option value="" disabled selected>THEATRE</option>
@@ -126,26 +103,12 @@ $row = mysqli_fetch_array($movieImageById);
                     <input placeholder="Last Name" type="text" name="lName">
 
                     <input placeholder="Phone Number" type="text" name="pNumber" required>
+                    <input placeholder="email" type="email" name="email" required>
 
                     
 
-                    <button type="submit" value="save" name="submit" class="form-btn"  >
-                         <!--<?php if (isset($_POST['submit'])) {
-                            } 
-                        ?>-->
-                        
-                        Book a seat</button>
-                        
-                    
-                        
-
-                       
-
-                    
-
-                    
-
-                    
+                    <button type="submit" value="save" name="submit" class="form-btn"  >Book a seat</button>
+                 
                 </form>
             </div>
         </div>
