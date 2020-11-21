@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
-        $id = $_GET['id'];
-        $link = mysqli_connect("localhost", "root", "", "cinema_db");
+<?php
+$id = $_GET['id'];
+$link = mysqli_connect("localhost", "root", "", "cinema_db");
 
-        $movieQuery = "SELECT * FROM movieTable WHERE movieID = $id"; 
-        $movieImageById = mysqli_query($link,$movieQuery);
-        $row = mysqli_fetch_array($movieImageById);
+$movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
+$movieImageById = mysqli_query($link, $movieQuery);
+$row = mysqli_fetch_array($movieImageById);
 ?>
 
 <head>
@@ -14,8 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Book <?php echo $row['movieTitle']; ?> Now</title>
     <link rel="icon" type="image/png" href="img/logo.png">
 </head>
@@ -31,8 +30,8 @@
         <div class="booking-panel-section booking-panel-section3">
             <div class="movie-box">
                 <?php
-                    echo '<img src="'.$row['movieImg'].'" alt="">';
-                    ?>
+                echo '<img src="' . $row['movieImg'] . '" alt="">';
+                ?>
             </div>
         </div>
         <div class="booking-panel-section booking-panel-section4">
@@ -104,26 +103,31 @@
 
                     <input placeholder="Phone Number" type="text" name="pNumber" required>
 
-                    <button type="submit" value="submit" name="submit" class="form-btn">Book a Seat</button>
+                    <button type="submit" value="submit" name="submit" class="form-btn">
+                        <?php if (isset($_POST['submit'])) {
+
+                        } 
+                        ?>Book a Seat</button>
+
                     <?php
-                    $fNameErr = $pNumberErr= "";
+                    $fNameErr = $pNumberErr = "";
                     $fName = $pNumber = "";
-            
-                    if(isset($_POST['submit'])){
-                     
-            
+
+                    if (isset($_POST['submit'])) {
+
+
                         $fName = $_POST['fName'];
                         if (!preg_match('/^[a-zA-Z0-9\s]+$/', $fName)) {
                             $fNameErr = 'Name can only contain letters, numbers and white spaces';
                             echo "<script type='text/javascript'>alert('$fNameErr');</script>";
-                        }   
-            
+                        }
+
                         $pNumber = $_POST['pNumber'];
                         if (preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $pNumber)) {
                             $pNumberErr = 'Phone Number can only contain numbers and white spaces';
                             echo "<script type='text/javascript'>alert('$pNumberErr');</script>";
-                        } 
-                        
+                        }
+
                         $insert_query = "INSERT INTO 
                         bookingTable (  movieName,
                                         bookingTheatre,
@@ -133,16 +137,16 @@
                                         bookingFName,
                                         bookingLName,
                                         bookingPNumber)
-                        VALUES (        '".$row['movieTitle']."',
-                                        '".$_POST["theatre"]."',
-                                        '".$_POST["type"]."',
-                                        '".$_POST["date"]."',
-                                        '".$_POST["hour"]."',
-                                        '".$_POST["fName"]."',
-                                        '".$_POST["lName"]."',
-                                        '".$_POST["pNumber"]."')";
-                        mysqli_query($link,$insert_query);
-                        }
+                        VALUES (        '" . $row['movieTitle'] . "',
+                                        '" . $_POST["theatre"] . "',
+                                        '" . $_POST["type"] . "',
+                                        '" . $_POST["date"] . "',
+                                        '" . $_POST["hour"] . "',
+                                        '" . $_POST["fName"] . "',
+                                        '" . $_POST["lName"] . "',
+                                        '" . $_POST["pNumber"] . "')";
+                        mysqli_query($link, $insert_query);
+                    }
                     ?>
                 </form>
             </div>

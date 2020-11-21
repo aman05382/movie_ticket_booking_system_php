@@ -8,17 +8,16 @@
     <title>Admin Dashboard</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../style/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
     <?php
     $link = mysqli_connect("localhost", "root", "", "cinema_db");
     $sql = "SELECT * FROM bookingTable";
-    $bookingsNo=mysqli_num_rows(mysqli_query($link, $sql));
-    $messagesNo=mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbackTable"));
-    $moviesNo=mysqli_num_rows(mysqli_query($link, "SELECT * FROM movieTable"));
+    $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
+    $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbackTable"));
+    $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movieTable"));
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
@@ -36,8 +35,7 @@
             <ul>
                 <li><i class="fas fa-sliders-h"></i><a href="admin.php">Dashboard </a><i class="fas admin-dropdown fa-chevron-right"></i></li>
                 <li><i class="fas fa-ticket-alt"></i><a href="">Bookings</a> <i class="fas admin-dropdown fa-chevron-right"></i></li>
-                <li class="admin-navigation-schedule"><i class="fas fa-calendar-alt"></i>Schedule <i
-                        class="fas admin-dropdown fa-chevron-right"></i>
+                <li class="admin-navigation-schedule"><i class="fas fa-calendar-alt"></i>Schedule <i class="fas admin-dropdown fa-chevron-right"></i>
                 </li>
                 <ul class="admin-navigation-schedule-dropdwn hidden-div">
                     <li>View Schedule</li>
@@ -77,37 +75,37 @@
                     </div>
                     <div class="admin-panel-section-content">
                         <?php
-                        if($result = mysqli_query($link, $sql)){
-                            if(mysqli_num_rows($result) > 0){
-                                while($row = mysqli_fetch_array($result)){
+                        if ($result = mysqli_query($link, $sql)) {
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_array($result)) {
                                     echo "<div class=\"admin-panel-section-booking-item\">\n";
                                     echo "                            <div class=\"admin-panel-section-booking-response\">\n";
                                     echo "                                <i class=\"fas fa-check accept-booking\" title=\"Verify booking\"></i>\n";
-                                    echo "                                <a href='deleteBooking.php?id=".$row['bookingID']."'><i class=\"fas fa-times decline-booking\" title=\"Reject booking\"></i></a>\n";
+                                    echo "                                <a href='deleteBooking.php?id=" . $row['bookingID'] . "'><i class=\"fas fa-times decline-booking\" title=\"Reject booking\"></i></a>\n";
                                     echo "                            </div>\n";
                                     echo "                            <div class=\"admin-panel-section-booking-info\">\n";
                                     echo "                                <div>\n";
-                                    echo "                                    <h3>". $row['movieName'] ."</h3>\n";
+                                    echo "                                    <h3>" . $row['movieName'] . "</h3>\n";
                                     echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>". $row['bookingTheatre'] ."</h4>\n";
+                                    echo "                                    <h4>" . $row['bookingTheatre'] . "</h4>\n";
                                     echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>". $row['bookingDate'] ."</h4>\n";
+                                    echo "                                    <h4>" . $row['bookingDate'] . "</h4>\n";
                                     echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>". $row['bookingTime'] ."</h4>\n";
+                                    echo "                                    <h4>" . $row['bookingTime'] . "</h4>\n";
                                     echo "                                </div>\n";
                                     echo "                                <div>\n";
-                                    echo "                                    <h4>". $row['bookingFName'] ." ". $row['bookingLName'] ."</h4>\n";
+                                    echo "                                    <h4>" . $row['bookingFName'] . " " . $row['bookingLName'] . "</h4>\n";
                                     echo "                                    <i class=\"fas fa-circle\"></i>\n";
-                                    echo "                                    <h4>". $row['bookingPNumber'] ."</h4>\n";
+                                    echo "                                    <h4>" . $row['bookingPNumber'] . "</h4>\n";
                                     echo "                                </div>\n";
                                     echo "                            </div>\n";
                                     echo "                        </div>";
                                 }
                                 mysqli_free_result($result);
-                            } else{
+                            } else {
                                 echo '<h4 class="no-annot">No Bookings right now</h4>';
                             }
-                        } else{
+                        } else {
                             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                         }
                         ?>
@@ -125,10 +123,14 @@
                         <input placeholder="Release Date" type="date" name="movieRelDate" required>
                         <input placeholder="Director" type="text" name="movieDirector" required>
                         <input placeholder="Actors" type="text" name="movieActors" required>
+                        <h3>Price</h3>
+                        <input placeholder="Main Hall" type="text" name="mainhall" required>
+                        <input placeholder="Vip-Hall" type="text" name="viphall" required>
+                        <input placeholder="Private Hall" type="text" name="privatehall" required><br>
                         <input type="file" name="movieImg" accept="image/*">
                         <button type="submit" value="submit" name="submit" class="form-btn">Add Movie</button>
                         <?php
-                        if(isset($_POST['submit'])){
+                        if (isset($_POST['submit'])) {
                             $insert_query = "INSERT INTO 
                             movieTable (  movieImg,
                                             movieTitle,
@@ -136,15 +138,22 @@
                                             movieDuration,
                                             movieRelDate,
                                             movieDirector,
-                                            movieActors)
-                            VALUES (        'img/".$_POST['movieImg']."',
-                                            '".$_POST["movieTitle"]."',
-                                            '".$_POST["movieGenre"]."',
-                                            '".$_POST["movieDuration"]."',
-                                            '".$_POST["movieRelDate"]."',
-                                            '".$_POST["movieDirector"]."',
-                                            '".$_POST["movieActors"]."')";
-                            mysqli_query($link,$insert_query);}
+                                            movieActors,
+                                            mainhall,
+                                            viphall,
+                                            privatehall)
+                            VALUES (        'img/" . $_POST['movieImg'] . "',
+                                            '" . $_POST["movieTitle"] . "',
+                                            '" . $_POST["movieGenre"] . "',
+                                            '" . $_POST["movieDuration"] . "',
+                                            '" . $_POST["movieRelDate"] . "',
+                                            '" . $_POST["movieDirector"] . "',
+                                            '" . $_POST["movieActors"] . "',
+                                            '" . $_POST["mainhall"] . "',
+                                            '" . $_POST["viphall"] . "',
+                                            '" . $_POST["privatehall"] . "')";
+                            mysqli_query($link, $insert_query);
+                        }
                         ?>
                     </form>
                 </div>
