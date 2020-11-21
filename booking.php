@@ -104,10 +104,11 @@ $row = mysqli_fetch_array($movieImageById);
                     <input placeholder="Phone Number" type="text" name="pNumber" required>
 
                     <button type="submit" value="submit" name="submit" class="form-btn">
-                        <?php if (isset($_POST['submit'])) {
+                        <!-- <?php if (isset($_POST['submit'])) {
 
                         } 
-                        ?>Book a Seat</button>
+                        ?> -->
+                        Book a Seat</button> 
 
                     <?php
                     $fNameErr = $pNumberErr = "";
