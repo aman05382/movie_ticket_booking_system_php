@@ -29,10 +29,10 @@ if (isset($_POST['but_logout'])) {
 <body>
     <?php
     $link = mysqli_connect("localhost", "root", "", "cinema_db");
-    $sql = "SELECT * FROM bookingTable";
+    $sql = "SELECT * FROM bookingtable";
     $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
-    $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbackTable"));
-    $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movieTable"));
+    $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbacktable"));
+    $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movietable"));
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
@@ -98,7 +98,7 @@ if (isset($_POST['but_logout'])) {
                                     echo "                            </div>\n";
                                     echo "                            <div class=\"admin-panel-section-booking-info\">\n";
                                     echo "                                <div>\n";
-                                    echo "                                    <h3>" . $row['movieName'] . "</h3>\n";
+                                    echo "                                    <h3>" . $row['movieTitle'] . "</h3>\n";
                                     echo "                                    <i class=\"fas fa-circle \"></i>\n";
                                     echo "                                    <h4>" . $row['bookingTheatre'] . "</h4>\n";
                                     echo "                                    <i class=\"fas fa-circle \"></i>\n";
