@@ -28,11 +28,12 @@
 			echo "Mobile= " . $row['bookingPNumber'] . "<br>";
 			echo "OrderID= " . $row['ORDERID'] . "<br>";
 		}
+		
 		?>
 	</div>
 	<br>
-	<input type="button" class="btn btn-danger" onclick="printDiv('printableArea')" value="Print Recipt!" />
-	<a type="button" class="btn btn-success" href='http://localhost/Railway_Reservation_System/'>Home-Page</a>
+	<!-- <input type="button" class="btn btn-danger" onclick="printDiv('printableArea')" value="Print Recipt!" />
+	<a type="button" class="btn btn-success" href='http://localhost/Railway_Reservation_System/'>Home-Page</a> -->
 
 
 
