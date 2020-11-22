@@ -88,6 +88,7 @@ if (isset($_POST['but_logout'])) {
                                 $movieID = $row['movieID'];
                                 $bookingFName = $row['bookingFName'];
                                 $ORDERID = $row['ORDERID'];
+                                
 
 
                             ?>
@@ -96,7 +97,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $movieID; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
-
+                                    <td><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
+                                    <td><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
 
                                 </tr>
 

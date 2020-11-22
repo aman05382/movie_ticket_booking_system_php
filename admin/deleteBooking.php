@@ -5,7 +5,7 @@
     $sql = "DELETE FROM bookingTable WHERE bookingID = $id"; 
 
     if ($link->query($sql) === TRUE) {
-        header('Location: admin.php');
+        header('Location: view.php');
         exit;
     } else {
         echo "Error deleting record: " . $link->error;
