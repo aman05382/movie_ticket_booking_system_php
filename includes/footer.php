@@ -17,7 +17,7 @@
     <p>© 2020 ARVR Movies. Created by Query Coder's. </p>
     <a>Advertising</a>
     <a>Privacy Policy</a>
-    <a>Contact</a>
+    <a href="contact-us.php">Contact</a>
 </div>
 
 <!-- <footer class="bg-dark d-flex justify-content-center">
