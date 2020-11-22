@@ -49,6 +49,7 @@
             ?>
         </div>
     </div>
+    
     <div id="home-section-2" class="services-section">
         <h1>How it works</h1>
         <h3>3 Simple steps to book your favourit movie!</h3>

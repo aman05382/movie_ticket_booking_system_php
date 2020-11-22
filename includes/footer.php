@@ -19,3 +19,8 @@
     <a>Privacy Policy</a>
     <a>Contact </a>
 </div>
+
+<!-- <footer class="bg-dark d-flex justify-content-center">
+    <h2 class="text-white" href="#">COVID-19 LIVE STATS</h2>
+    <h2 style="color:#fff;">Developed By <a target="_blank" class="navbar-brand line text-white" href="https://github.com/aman05382/">Aman Sharma</a></h2>
+</footer> -->
