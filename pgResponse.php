@@ -45,7 +45,7 @@ if($isValidChecksum == "TRUE") {
 
 
 			mysqli_query($conn, $qry);
-
+// push manager
 
 			header('Location: reciept.php?id=' . $_POST['ORDERID']);
 		}
