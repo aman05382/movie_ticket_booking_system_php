@@ -39,9 +39,7 @@ if (isset($_POST['but_logout'])) {
             BUE Cinema
         </div>
         <div class="admin-login-info">
-            <i class="far fa-bell admin-notification-button"></i>
-            <i class="far fa-comment-alt"></i>
-            <a href="#">Welcome, Admin</a>
+            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
             <form method='post' action="">
                 <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
@@ -73,10 +71,12 @@ if (isset($_POST['but_logout'])) {
                         <input placeholder="Release Date" type="date" name="movieRelDate" required>
                         <input placeholder="Director" type="text" name="movieDirector" required>
                         <input placeholder="Actors" type="text" name="movieActors" required>
-                        <h3>Price</h3>
-                        <input placeholder="Main Hall" type="text" name="mainhall" required>
-                        <input placeholder="Vip-Hall" type="text" name="viphall" required>
-                        <input placeholder="Private Hall" type="text" name="privatehall" required><br>
+                        <label>Price</label>
+                        <input placeholder="Main Hall" type="text" name="mainhall" required><br />
+                        <input placeholder="Vip-Hall" type="text" name="viphall" required><br />
+                        <input placeholder="Private Hall" type="text" name="privatehall" required><br />
+                        <br>
+                        <label>Add Poster</label>
                         <input type="file" name="movieImg" accept="image/*">
                         <button type="submit" value="submit" name="submit" class="form-btn">Add Movie</button>
                         <?php
