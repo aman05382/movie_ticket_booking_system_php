@@ -23,6 +23,7 @@ if (isset($_POST['but_logout'])) {
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link rel="stylesheet" href="../style/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -42,7 +43,7 @@ if (isset($_POST['but_logout'])) {
             <i class="far fa-comment-alt"></i>
             <a href="#">Welcome, Admin</a>
             <form method='post' action="">
-                <input type="submit" value="Logout" name="but_logout">
+                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
             <img class="admin-user-avatar" src="../img/avatar.png" alt="">
         </div>
@@ -52,13 +53,8 @@ if (isset($_POST['but_logout'])) {
             <ul>
                 <li><i class="fas fa-sliders-h"></i><a href="admin.php">Dashboard </a><i class="fas admin-dropdown fa-chevron-right"></i></li>
                 <li><i class="fas fa-ticket-alt"></i><a href="view.php">Bookings</a> <i class="fas admin-dropdown fa-chevron-right"></i></li>
-                <li class="admin-navigation-schedule"><i class="fas fa-calendar-alt"></i>Schedule <i class="fas admin-dropdown fa-chevron-right"></i>
-                </li>
-                <ul class="admin-navigation-schedule-dropdwn hidden-div">
-                    <li>View Schedule</li>
-                    <li>Edit Schedule</li>
-                </ul>
-                <li><i class="fas fa-film"></i>Movies <i class="fas admin-dropdown fa-chevron-right"></i></li>
+                
+                <li><i class="fas fa-film"></i><a href="addmovie.php">Movies</a> <i class="fas admin-dropdown fa-chevron-right"></i></a></li>
             </ul>
         </div>
         <div class="admin-section admin-section2">
@@ -128,68 +124,9 @@ if (isset($_POST['but_logout'])) {
                         ?>
                     </div>
                 </div>
-                <div class="admin-section-panel admin-section-panel2">
-                    <div class="admin-panel-section-header">
-                        <h2>Movies</h2>
-                        <i class="fas fa-film" style="background-color: #4547cf"></i>
-                    </div>
-                    <form action="" method="POST">
-                        <input placeholder="Title" type="text" name="movieTitle" required>
-                        <input placeholder="Genre" type="text" name="movieGenre" required>
-                        <input placeholder="Duration" type="number" name="movieDuration" required>
-                        <input placeholder="Release Date" type="date" name="movieRelDate" required>
-                        <input placeholder="Director" type="text" name="movieDirector" required>
-                        <input placeholder="Actors" type="text" name="movieActors" required>
-                        <h3>Price</h3>
-                        <input placeholder="Main Hall" type="text" name="mainhall" required>
-                        <input placeholder="Vip-Hall" type="text" name="viphall" required>
-                        <input placeholder="Private Hall" type="text" name="privatehall" required><br>
-                        <input type="file" name="movieImg" accept="image/*">
-                        <button type="submit" value="submit" name="submit" class="form-btn">Add Movie</button>
-                        <?php
-                        if (isset($_POST['submit'])) {
-                            $insert_query = "INSERT INTO 
-                            movieTable (  movieImg,
-                                            movieTitle,
-                                            movieGenre,
-                                            movieDuration,
-                                            movieRelDate,
-                                            movieDirector,
-                                            movieActors,
-                                            mainhall,
-                                            viphall,
-                                            privatehall)
-                            VALUES (        'img/" . $_POST['movieImg'] . "',
-                                            '" . $_POST["movieTitle"] . "',
-                                            '" . $_POST["movieGenre"] . "',
-                                            '" . $_POST["movieDuration"] . "',
-                                            '" . $_POST["movieRelDate"] . "',
-                                            '" . $_POST["movieDirector"] . "',
-                                            '" . $_POST["movieActors"] . "',
-                                            '" . $_POST["mainhall"] . "',
-                                            '" . $_POST["viphall"] . "',
-                                            '" . $_POST["privatehall"] . "')";
-                            mysqli_query($link, $insert_query);
-                        }
-                        ?>
-                    </form>
-                </div>
+                
             </div>
-            <div class="admin-section-column">
-                <div class="admin-section-panel admin-section-panel4">
-                    <div class="admin-panel-section-header">
-                        <h2>Schedule</h2>
-                        <i class="fas fa-clock" style="background-color: #3cbb6c"></i>
-                    </div>
-                </div>
-                <div class="admin-section-panel admin-section-panel5">
-                    <div class="admin-panel-section-header">
-                        <h2>To-do List</h2>
-                        <i class="fas fa-list-ol" style="background-color: #bb3c95"></i>
-                    </div>
-                    <div class="admin-panel-section-content"></div>
-                </div>
-            </div>
+            
         </div>
     </div>
 
