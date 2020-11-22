@@ -16,12 +16,10 @@
     $link = mysqli_connect("localhost", "root", "", "cinema_db");
     ?>
     <header></header>
-    <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=BUE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-    </div>
     <div class="contact-us-container">
         <div class="contact-us-section contact-us-section1">
             <h1>Contact</h1>
-            <p>Contact us here </p>
+            <p>Feel Free to Contact Us </p>
             <form action="" method="POST">
                 <input placeholder="First Name" name="fName" required><br>
                 <input placeholder="Last Name" name="lName"><br>
@@ -54,6 +52,10 @@
             <p>El Sherouk City , Suez Desert Road , Cairo 11837 - P.O. Box 43</p>
             <h3>E-mail</h3>
             <p><a href="mailto:cinemareservation@bue.edu.eg">cinemareservation@bue.edu.eg</a></p>
+        </div>
+    </div>
+    <div style="width: 75%; height: 350px; margin: 15%;">
+        <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=BUE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </div>
     </div>
     <footer></footer>
