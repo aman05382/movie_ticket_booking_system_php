@@ -871,9 +871,9 @@ footer {
 }
 
 .admin-section-column {
-  flex: 50%;
-  max-width: 50%;
-  padding: 0 10px;
+  flex: 100%;
+  max-width: 100%;
+  padding: 0 30px;
 }
 
 .admin-section-panel {
