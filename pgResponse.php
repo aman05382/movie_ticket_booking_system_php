@@ -47,10 +47,21 @@ if ($isValidChecksum == "TRUE") {
 
 			 }
 
+<<<<<<< HEAD
 			// mysqli_query($conn, $qry);
 			// push manager
 
 			// header('Location: reciept.php?id=' . $_POST['ORDERID']);
+=======
+			mysqli_query($conn, $qry);
+
+			$payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
+			('" . $_POST['ORDERID'] . "','" . $_POST['MID'] . "', '" . $_POST['TXNID'] . "','" . $_POST['TXNAMOUNT'] . "','" . $_POST['PAYMENTMODE'] . "','" . $_POST['CURRENCY'] . "','" . $_POST['TXNDATE'] . "','" . $_POST['STATUS'] . "','" . $_POST['RESPCODE'] . "','" . $_POST['RESPMSG'] . "','" . $_POST['GATEWAYNAME'] . "','" . $_POST['BANKTXNID'] . "','" . $_POST['BANKNAME'] . "','" . $_POST['CHECKSUMHASH'] . "')";
+
+			mysqli_query($conn, $payment);
+			
+			header('Location: reciept.php?id=' . $_POST['ORDERID']);
+>>>>>>> bbd0a2d621e5e43e7bbacaaad48fa1d84c689645
 		}
 
 		//Process your transaction here as success transaction.

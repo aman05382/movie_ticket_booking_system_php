@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 02:19 PM
+-- Generation Time: Nov 22, 2020 at 01:20 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -38,6 +38,7 @@ CREATE TABLE `bookingtable` (
   `bookingFName` varchar(100) NOT NULL,
   `bookingLName` varchar(100) DEFAULT NULL,
   `bookingPNumber` varchar(12) NOT NULL,
+  `bookingEmail` varchar(255) NOT NULL,
   `ORDERID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,12 +46,8 @@ CREATE TABLE `bookingtable` (
 -- Dumping data for table `bookingtable`
 --
 
-INSERT INTO `bookingtable` (`bookingID`, `movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `ORDERID`) VALUES
-(22, 0, 'vip-hall', 'imax', '13-3', '18-00', 'Kareem', 'Ahmed', '01589965', ''),
-(23, 0, 'main-hall', '3d', '12-3', '18-00', 'madhulata', 'sharma', '09561820631', ''),
-(24, 0, 'main-hall', '3d', '13-3', '15-00', 'Aman', 'Sharma', '09404977186', ''),
-(25, 0, 'vip-hall', '3d', '13-3', '15-00', 'dd', 'dd', 'dd', ''),
-(26, 0, '', '', '', '', '', '', '', 'ORD49092896');
+INSERT INTO `bookingtable` (`bookingID`, `movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES
+(38, 1, 'private-hall', '7d', '13-3', '15-00', 'Roshan', 'Bonde', '7448042514', 'robinbond2k18@gmail.com', 'ORD74294887');
 
 -- --------------------------------------------------------
 
@@ -72,7 +69,8 @@ CREATE TABLE `feedbacktable` (
 
 INSERT INTO `feedbacktable` (`msgID`, `senderfName`, `senderlName`, `sendereMail`, `senderfeedback`) VALUES
 (1, 'Ahmed', 'Ali', 'Ahmed@mail.com', 'Hello first'),
-(2, 'Ahmed', 'Ali', 'asa@as.com', 'asdas');
+(2, 'Ahmed', 'Ali', 'asa@as.com', 'asdas'),
+(3, 'Roshan', 'Bonde', 'robinbond2k18@gmail.com', 'Very bad arrangement.\r\n\r\nWorsts I have ever seen.\r\n\r\nBastards!!!!!!!');
 
 -- --------------------------------------------------------
 
@@ -104,10 +102,37 @@ INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `mo
 (3, 'img/movie-poster-3.jpg', 'The Lego Movie', 'Animation, Action, Adventure', 110, '2014-02-07', 'Phil Lord, Christopher Miller', 'Chris Pratt, Will Ferrell, Elizabeth Banks', 0, 0, 0),
 (4, 'img/movie-poster-4.jpg', 'Nadi Elregal Elserri ', 'Comedy', 105, '2019-01-23', ' Ayman Uttar', 'Karim Abdul Aziz, Ghada Adel, Maged El Kedwany, Nesreen Tafesh, Bayyumy Fouad, Moataz El Tony ', 0, 0, 0),
 (5, 'img/movie-poster-5.jpg', 'VICE', 'Biography, Comedy, Drama', 132, '2018-12-25', 'Adam McKay', 'Christian Bale, Amy Adams, Steve Carell', 0, 0, 0),
-(6, 'img/movie-poster-6.jpg', 'The Vanishing', 'Crime, Mystery, Thriller', 107, '2019-01-04', 'Kristoffer Nyholm', 'Gerard Butler, Peter Mullan, Connor Swindells', 0, 0, 0),
-(12, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
-(13, 'img/IMG-20181111-WA0038.jpg', 'aman', 'dcdc', 4, '2020-11-19', 'cc', 'cc', 0, 0, 0),
-(14, 'img/', 'aman', 'dcdc', 4, '2020-11-29', 'cc', 'cc', 500, 900, 1500);
+(6, 'img/movie-poster-6.jpg', 'The Vanishing', 'Crime, Mystery, Thriller', 107, '2019-01-04', 'Kristoffer Nyholm', 'Gerard Butler, Peter Mullan, Connor Swindells', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `ORDERID` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `MID` varchar(255) NOT NULL,
+  `TXNID` varchar(255) NOT NULL,
+  `TXNAMOUNT` varchar(255) NOT NULL,
+  `PAYMENTMODE` varchar(255) NOT NULL,
+  `CURRENCY` varchar(255) NOT NULL,
+  `TXNDATE` varchar(255) NOT NULL,
+  `STATUS` varchar(255) NOT NULL,
+  `RESPCODE` varchar(255) NOT NULL,
+  `RESPMSG` varchar(255) NOT NULL,
+  `GATEWAYNAME` varchar(255) NOT NULL,
+  `BANKTXNID` varchar(255) NOT NULL,
+  `BANKNAME` varchar(255) NOT NULL,
+  `CHECKSUMHASH` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES
+('ORD74294887', 'BvuNYX16485310423471', '20201122111212800110168967602099353', '900.00', 'NB', 'INR', '2020-11-22 22:52:27.0', 'TXN_SUCCESS', '01', 'Txn Success', 'AXIS', '12097079902', 'AXIS', 'mzBIZdaiA+Gfw9Yluagan+n8wM4O8JI/WdKryykKMQYtCA/ZBa5J1recZP6o6XL5j735yb8e+VxPdBNZE/GUwXf9RWJDawzsOZ76syjMkjM=');
 
 -- --------------------------------------------------------
 
@@ -139,9 +164,8 @@ INSERT INTO `users` (`id`, `username`, `name`, `password`) VALUES
 ALTER TABLE `bookingtable`
   ADD PRIMARY KEY (`bookingID`),
   ADD UNIQUE KEY `bookingID` (`bookingID`),
-  ADD KEY `bookingID_2` (`bookingID`),
-  ADD KEY `bookingID_3` (`bookingID`),
-  ADD KEY `bookingID_4` (`bookingID`);
+  ADD KEY `foreign_key_movieID` (`movieID`),
+  ADD KEY `foreign_key_ORDERID` (`ORDERID`);
 
 --
 -- Indexes for table `feedbacktable`
@@ -158,6 +182,12 @@ ALTER TABLE `movietable`
   ADD UNIQUE KEY `movieID` (`movieID`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`ORDERID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -171,25 +201,36 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `feedbacktable`
 --
 ALTER TABLE `feedbacktable`
-  MODIFY `msgID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `msgID` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `movietable`
 --
 ALTER TABLE `movietable`
-  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bookingtable`
+--
+ALTER TABLE `bookingtable`
+  ADD CONSTRAINT `foreign_key_ORDERID` FOREIGN KEY (`ORDERID`) REFERENCES `payment` (`ORDERID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `foreign_key_movieID` FOREIGN KEY (`movieID`) REFERENCES `movietable` (`movieID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
