@@ -35,7 +35,9 @@ if (isset($_POST['but_logout'])) {
             BUE Cinema
         </div>
         <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
+            <div style="padding: 0 20px;">
+                <h2><a href="#">Admin Panel</a></h2>
+            </div>
             <form method='post' action="">
                 <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
@@ -52,7 +54,7 @@ if (isset($_POST['but_logout'])) {
         </div>-->
     </div>
     <div class="admin-container">
-        
+
         <?php include('sidebar.php'); ?>
         <div class="container-lg">
             <div class="table-responsive">
@@ -63,7 +65,7 @@ if (isset($_POST['but_logout'])) {
                                 <h2>Employee <b>Details</b></h2>
                             </div>
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                                <a href='add.php'><button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +94,7 @@ if (isset($_POST['but_logout'])) {
                                 $movieID = $row['movieID'];
                                 $bookingFName = $row['bookingFName'];
                                 $ORDERID = $row['ORDERID'];
-                                
+
 
 
                             ?>

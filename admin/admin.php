@@ -24,6 +24,8 @@ if (isset($_POST['but_logout'])) {
     <link rel="stylesheet" href="../style/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -84,45 +86,56 @@ if (isset($_POST['but_logout'])) {
                 </div>
                 <div class="admin-section-panel admin-section-panel1">
                     <div class="admin-panel-section-header">
-                        <h2>Bookings</h2>
+                        <h2>Recent Bookings</h2>
                         <i class="fas fa-ticket-alt" style="background-color: #cf4545"></i>
                     </div>
                     <div class="admin-panel-section-content">
-                        <?php
-                        if ($result = mysqli_query($link, $sql)) {
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_array($result)) {
-                                    echo "<div class=\"admin-panel-section-booking-item\">\n";
-                                    echo "                            <div class=\"admin-panel-section-booking-response\">\n";
-                                    echo "                                <i class=\"fas fa-check accept-booking\" title=\"Verify booking\"></i>\n";
-                                    echo "                                <a href='deleteBooking.php?id=" . $row['bookingID'] . "'><i class=\"fas fa-times decline-booking\" title=\"Reject booking\"></i></a>\n";
-                                    echo "                            </div>\n";
-                                    echo "                            <div class=\"admin-panel-section-booking-info\">\n";
-                                    echo "                                <div>\n";
-                                    echo "                                    <h3>" . $row['movieTitle'] . "</h3>\n";
-                                    echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>" . $row['bookingTheatre'] . "</h4>\n";
-                                    echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>" . $row['bookingDate'] . "</h4>\n";
-                                    echo "                                    <i class=\"fas fa-circle \"></i>\n";
-                                    echo "                                    <h4>" . $row['bookingTime'] . "</h4>\n";
-                                    echo "                                </div>\n";
-                                    echo "                                <div>\n";
-                                    echo "                                    <h4>" . $row['bookingFName'] . " " . $row['bookingLName'] . "</h4>\n";
-                                    echo "                                    <i class=\"fas fa-circle\"></i>\n";
-                                    echo "                                    <h4>" . $row['bookingPNumber'] . "</h4>\n";
-                                    echo "                                </div>\n";
-                                    echo "                            </div>\n";
-                                    echo "                        </div>";
-                                }
-                                mysqli_free_result($result);
-                            } else {
-                                echo '<h4 class="no-annot">No Bookings right now</h4>';
-                            }
-                        } else {
-                            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                        }
-                        ?>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                        <tbody>
+                            <?php
+                            $host = "localhost"; /* Host name */
+                            $user = "root"; /* User */
+                            $password = ""; /* Password */
+                            $dbname = "cinema_db"; /* Database name */
+
+                            $con = mysqli_connect($host, $user, $password, $dbname);
+                            $select = "SELECT * FROM `bookingtable`";
+                            $run = mysqli_query($con, $select);
+                            while ($row = mysqli_fetch_array($run)) {
+                                $bookingid = $row['bookingID'];
+                                $movieID = $row['movieID'];
+                                $bookingFName = $row['bookingFName'];
+                                $mobile = $row['bookingPNumber'];
+                                $email = $row['bookingEmail'];
+                                $date = $row['bookingDate'];
+                                $ORDERID = $row['ORDERID'];
+                                
+
+
+                            ?>
+                                <tr align="center">
+                                    <td><?php echo $bookingid; ?></td>
+                                    <td><?php echo $movieID; ?></td>
+                                    <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $mobile; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td><?php echo $date; ?></td>
+                                    <td><?php echo $ORDERID; ?></td>
+                                </tr>
+
+                            <?php }
+                            ?>
+                        </tbody>
+
+                    </table>
                     </div>
                 </div>
                 
