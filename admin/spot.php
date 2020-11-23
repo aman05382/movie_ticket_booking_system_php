@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 if(isset($_POST['submit'])) {
-	       $fname = $_POST['fName'];
+	        $fname = $_POST['fName'];
             $lname = $_POST['lName'];
             $email = $_POST['email'];
             $mobile = $_POST['pNumber'];
@@ -26,21 +26,19 @@ if(isset($_POST['submit'])) {
             $order = "ORD" . rand(10000, 99999999);
             
             
+            $payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
+			('$order', NULL, NULL, '$amount', 'CASH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+            
 			$qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES  
 			('$movieid', '$theatre', '$type', '$date', '$time', '$fname', '$lname', '$mobile','$email', '$order')";
 
-			$payment = "INSERT INTO `payment`(`ORDERID`,`TXNAMOUNT`, `PAYMENTMODE`) VALUES 
-			('$order', '$amount, 'CASH')";
-
-
-			mysqli_query($conn, $qry);
             mysqli_query($conn, $payment);
+            mysqli_query($conn, $qry);
             
             echo "Success";
             header('Location: add.php');
 
-		}
-		else {
+		}  else {
 			echo "error" . mysqli_error($conn);
 		}
 ?>
