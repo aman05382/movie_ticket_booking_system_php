@@ -95,8 +95,6 @@ if (isset($_POST['but_logout'])) {
                                 $bookingFName = $row['bookingFName'];
                                 $ORDERID = $row['ORDERID'];
 
-
-
                             ?>
                                 <tr align="center">
                                     <td><?php echo $bookingid; ?></td>
@@ -104,7 +102,7 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                     <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></button></td>
-                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-warning"><?php echo  "<a name='update' href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
                                 </tr>
 
                             <?php }

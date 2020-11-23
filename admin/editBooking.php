@@ -39,7 +39,7 @@ $data = mysqli_fetch_array($qry); // fetch data
 
 if(isset($_POST['update'])) // when click on Update button
 {
-    $fullname = $_POST['fullname'];
+    $fullname = $_POST['fullname']; 
     $age = $_POST['age'];
 	
     $edit = mysqli_query($db,"update tblemp set fullname='$fullname', age='$age' where id='$id'");
