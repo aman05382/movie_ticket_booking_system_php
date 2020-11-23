@@ -68,25 +68,25 @@
                             $dbname = "cinema_db"; /* Database name */
 
                             $con = mysqli_connect($host, $user, $password, $dbname);
-                            $select = "SELECT * FROM `bookingtable`";
+                            $select = "SELECT * FROM `feedbacktable`";
                             $run = mysqli_query($con, $select);
                             while ($row = mysqli_fetch_array($run)) {
-                                $bookingid = $row['bookingID'];
-                                $movieID = $row['movieID'];
-                                $bookingFName = $row['bookingFName'];
-                                $ORDERID = $row['ORDERID'];
+                                $id = $row['msgID'];
+                                $firstname = $row['senderfName'];
+                                $lastname = $row['senderlName'];
+                                $email = $row['senderlName'];
+                                $message = $row['senderfeedback'];
                                 
 
 
                             ?>
                                 <tr align="center">
-                                    <td><?php echo $bookingid; ?></td>
-                                    <td><?php echo $movieID; ?></td>
-                                    <td><?php echo $bookingFName; ?></td>
-                                    <td><?php echo $ORDERID; ?></td>
-                                    <td><?php echo  "<a href='Deletecontact.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
-                                    <!--<td><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></td>-->
-
+                                    <td><?php echo $id; ?></td>
+                                    <td><?php echo $firstname; ?></td>
+                                    <td><?php echo $lastname; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td><?php echo $message; ?></td>
+                                    <td><?php echo  "<a href='Deletecontact.php?id=" . $row['msgID'] . "'>delete</a>"; ?></td>
                                 </tr>
 
                             <?php }

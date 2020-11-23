@@ -2,10 +2,10 @@
     $id = $_GET['id'];
     $link = mysqli_connect("localhost", "root", "", "cinema_db");
 
-    $sql = "DELETE FROM feedbackTable WHERE bookingID = $id"; 
+    $sql = "DELETE FROM feedbackTable WHERE msgID = $id"; 
 
     if ($link->query($sql) === TRUE) {
-        header('Location: view.php');
+        header('Location: contactus.php');
         exit;
     } else {
         echo "Error deleting record: " . $link->error;

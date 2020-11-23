@@ -24,6 +24,8 @@ if (isset($_POST['but_logout'])) {
     <link rel="stylesheet" href="../style/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -39,7 +41,9 @@ if (isset($_POST['but_logout'])) {
             BUE Cinema
         </div>
         <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
+            <div style="padding: 0 20px;">
+                <h2><a href="#">Admin Panel</a></h2>
+            </div>
             <form method='post' action="">
                 <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
@@ -47,12 +51,12 @@ if (isset($_POST['but_logout'])) {
         </div>
     </div>
     <div class="admin-container">
-        
+
         <?php include('sidebar.php'); ?>
         <div class="admin-section admin-section2">
             <div class="admin-section-column">
-                
-                
+
+
                 <div class="admin-section-panel admin-section-panel2">
                     <div class="admin-panel-section-header">
                         <h2>Movies</h2>
@@ -101,8 +105,55 @@ if (isset($_POST['but_logout'])) {
                         ?>
                     </form>
                 </div>
+                <div class="admin-section-panel admin-section-panel2">
+                    <div class="admin-panel-section-header">
+                        <h2>Recent Movies</h2>
+                        <i class="fas fa-film" style="background-color: #4547cf"></i>
+                    </div>
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                        <tbody>
+                            <?php
+                            $host = "localhost"; /* Host name */
+                            $user = "root"; /* User */
+                            $password = ""; /* Password */
+                            $dbname = "cinema_db"; /* Database name */
+
+                            $con = mysqli_connect($host, $user, $password, $dbname);
+                            $select = "SELECT * FROM `bookingtable`";
+                            $run = mysqli_query($con, $select);
+                            while ($row = mysqli_fetch_array($run)) {
+                                $title = $row['movieTitle'];
+                                $movieID = $row['movieID'];
+                                $bookingFName = $row['bookingFName'];
+                                $ORDERID = $row['ORDERID'];
+
+
+
+                            ?>
+                                <tr align="center">
+                                    <td><?php echo $bookingid; ?></td>
+                                    <td><?php echo $movieID; ?></td>
+                                    <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $ORDERID; ?></td>
+                                    <td><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
+                                </tr>
+                            <?php }
+                            ?>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
-            
+
         </div>
     </div>
 
