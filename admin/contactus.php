@@ -56,8 +56,8 @@
                             <th>MessageId</th>
                             <th>SenderFname</th>
                             <th>SenderLname</th>
-                            <th>SenderLname</th>
-                            <th>SenderLname</th>
+                            <th>Sendermail</th>
+                            <th>Senderfeedback</th>
                             <!--<th>Salary</th>-->
                         </tr>
                         <tbody>
