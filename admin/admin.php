@@ -65,7 +65,7 @@ if (isset($_POST['but_logout'])) {
             <div class="admin-section-column">
                 <div class="admin-section-panel admin-section-stats">
                     <div class="admin-section-stats-panel">
-                        <i class="fas fa-ticket-alt" style="background-color: #cf4545"></i>
+                        <i class="fa fa-ticket-alt"  style="background-color: #cf4545"></i>
                         <h2 style="color: #cf4545"><?php echo $bookingsNo ?></h2>
                         <h3>Bookings</h3>
                     </div>
@@ -75,7 +75,8 @@ if (isset($_POST['but_logout'])) {
                         <h3>Movies</h3>
                     </div>
                     <div class="admin-section-stats-panel">
-                        <i class="fas fa-ticket-alt" style="background-color: #bb3c95"></i>
+                        <i class="fas fa-users" style="background-color: #000000"></i>
+                        <!--<i class="fas fa-ticket-alt"></i>-->
                         <h2 style="color: #bb3c95"><?php echo $userNo ?></h2>
                         <h3>Users</h3>
                     </div>
