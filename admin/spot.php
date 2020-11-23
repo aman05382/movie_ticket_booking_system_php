@@ -32,11 +32,15 @@ if(isset($_POST['submit'])) {
 			$payment = "INSERT INTO `payment`(`ORDERID`,`TXNAMOUNT`, `PAYMENTMODE`) VALUES 
 			('$order', '$amount, 'CASH')";
 
-            mysqli_query($conn, $payment);
+
 			mysqli_query($conn, $qry);
+            mysqli_query($conn, $payment);
             
             echo "Success";
             header('Location: add.php');
 
-        }
+		}
+		else {
+			echo "error" . mysqli_error($conn);
+		}
 ?>
