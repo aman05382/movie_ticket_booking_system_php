@@ -67,7 +67,7 @@
                                 $id = $row['msgID'];
                                 $firstname = $row['senderfName'];
                                 $lastname = $row['senderlName'];
-                                $email = $row['senderlName'];
+                                $email = $row['sendereMail'];
                                 $message = $row['senderfeedback'];
                                 
 
