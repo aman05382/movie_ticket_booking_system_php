@@ -32,7 +32,7 @@ if (isset($_POST['but_logout'])) {
 <body>
     <div class="admin-section-header">
         <div class="admin-logo">
-            BUE Cinema
+            ARVR Cinema
         </div>
         <div class="admin-login-info">
             <div style="padding: 0 20px;">
@@ -64,9 +64,9 @@ if (isset($_POST['but_logout'])) {
                             <div class="col-sm-8">
                                 <h2>Employee <b>Details</b></h2>
                             </div>
-                            <div class="col-sm-4">
+                            <!--<div class="col-sm-4">
                                 <a href='add.php'><button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -103,9 +103,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $movieID; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
-                                    <td><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
-                                    <td><?php echo  "<a name='update' href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></td>
-
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></button></td>
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
                                 </tr>
 
                             <?php }
