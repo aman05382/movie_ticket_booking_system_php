@@ -35,6 +35,7 @@ if (isset($_POST['but_logout'])) {
     $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
     $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbacktable"));
     $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movietable"));
+    $userNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM users"));
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
@@ -75,8 +76,8 @@ if (isset($_POST['but_logout'])) {
                     </div>
                     <div class="admin-section-stats-panel">
                         <i class="fas fa-ticket-alt" style="background-color: #bb3c95"></i>
-                        <h2 style="color: #bb3c95">dummy</h2>
-                        <h3>Dummy</h3>
+                        <h2 style="color: #bb3c95"><?php echo $userNo ?></h2>
+                        <h3>Users</h3>
                     </div>
                     <div class="admin-section-stats-panel" style="border: none">
                         <i class="fas fa-envelope" style="background-color: #3cbb6c"></i>
