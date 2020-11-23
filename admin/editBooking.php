@@ -16,54 +16,60 @@
             BUE Cinema
         </div>
         <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
+            <div style="padding: 0 20px;">
+                <h2><a href="#">Admin Panel</a></h2>
+            </div>
             <form method='post' action="">
                 <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
             <img class="admin-user-avatar" src="../img/avatar.png" alt="">
         </div>
-        
+
     </div>
     <div class="admin-container">
         <?php include('sidebar.php'); ?>
     </div>
     <?php
 
-// include "dbConn.php"; // Using database connection file here
-$link = mysqli_connect("localhost", "root", "", "cinema_db");
-$id = $_GET['id']; // get id through query string
+    $link = mysqli_connect("localhost", "root", "", "cinema_db");
+    $id = $_GET['id']; // get id through query string
+    $setting = "select * from bookingtable where bookingID='$id'";
+    $qry = mysqli_query($link, $setting); // select query
 
-$qry = mysqli_query($link,"select * from bookingtable where id='$id'"); // select query
+    // while($row = mysqli_fetch_array($qry)){
+    //     $First_Name = $row['bookingFName'];
+    //     $Last_Name = $row['bookingLName'];
+    //     $phone_mobile = $row['bookingPNumber'];
+    //     $email1 = $row['bookingEmail'];
+    // }
+    $data = mysqli_fetch_array($qry); // fetch data
 
-$data = mysqli_fetch_array($qry); // fetch data
-
-if(isset($_POST['update'])) // when click on Update button
-{
-    $fullname = $_POST['fullname']; 
-    $age = $_POST['age'];
-	
-    $edit = mysqli_query($db,"update tblemp set fullname='$fullname', age='$age' where id='$id'");
-	
-    if($edit)
+    if (isset($_POST['update'])) // when click on Update button
     {
-        mysqli_close($db); // Close connection
-        header("location:all_records.php"); // redirects to all records page
-        exit;
+        $firstname = $_POST['first'];
+        $lastname = $_POST['last'];
+        $phone = $_POST['number'];
+        $email = $_POST['email'];
+
+        $edit = mysqli_query($link, "update bookingtable set bookingFName='$firstname', bookingLName='$lastname',bookingPNumber='$phone',bookingEmail='$email' where bookingID='$id'");
+
+        if ($edit) {
+            mysqli_close($link); // Close connection
+            header("location:view.php"); // redirects to all records page
+            exit;
+        } else {
+            echo "error";
+        }
     }
-    else
-    {
-        echo "error";
-    }    	
-}
-?>
+    ?>
 
-<h3>Update Data</h3>
-
-<form method="POST">
-  <input type="text" name="fullname" value="<?php echo $data['fullname'] ?>" placeholder="Enter Full Name" Required>
-  <input type="text" name="age" value="<?php echo $data['age'] ?>" placeholder="Enter Age" Required>
-  <input type="submit" name="update" value="Update">
-</form>
+    <form method="POST">
+        <input type="text" name="first" value="<?php echo $data['bookingFName'] ?>" placeholder="Enter First Name" Required>
+        <input type="text" name="last" value="<?php echo $data['bookingLName'] ?>" placeholder="Enter Last Name" Required>
+        <input type="text" name="number" value="<?php echo $data['bookingPNumber'] ?>" placeholder="Enter Last Name" Required>
+        <input type="text" name="email" value="<?php echo $data['bookingEmail'] ?>" placeholder="Enter Age" Required>
+        <input type="submit" name="update" value="Update">
+    </form>
 </body>
 
 </html>
