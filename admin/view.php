@@ -81,6 +81,7 @@ if (isset($_POST['but_logout'])) {
                             <th>Date</th>
                             <th>Theatre</th>
                             <th>Type</th>
+                            <th>Time</th>
                             <th>ORDERID</th>
                             <th colspan='2'>MORE</th>
                         </tr>
@@ -104,6 +105,7 @@ if (isset($_POST['but_logout'])) {
                                 $date = $row['bookingDate'];
                                 $theatre = $row['bookingTheatre'];
                                 $type = $row['bookingType'];
+                                $time = $row['bookingTime'];
                                 $ORDERID = $row['ORDERID'];
                                 
 
@@ -120,6 +122,7 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $date; ?></td>
                                     <td><?php echo $theatre; ?></td>
                                     <td><?php echo $type; ?></td>
+                                    <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                     <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></button></td>
                                     <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>

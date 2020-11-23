@@ -99,6 +99,8 @@ if (isset($_POST['but_logout'])) {
                             <th>Phone_Number</th>
                             <th>Email</th>
                             <th>Date</th>
+                            <th>Theatre</th>
+                            <th>Type</th>
                             <th>ORDERID</th>
                         </tr>
                         <tbody>
@@ -119,6 +121,8 @@ if (isset($_POST['but_logout'])) {
                                 $mobile = $row['bookingPNumber'];
                                 $email = $row['bookingEmail'];
                                 $date = $row['bookingDate'];
+                                $theatre = $row['bookingTheatre'];
+                                $type = $row['bookingType'];
                                 $ORDERID = $row['ORDERID'];
                                 
 
@@ -132,6 +136,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $date; ?></td>
+                                    <td><?php echo $theatre; ?></td>
+                                    <td><?php echo $type; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                 </tr>
 
