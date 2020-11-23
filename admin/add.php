@@ -40,7 +40,7 @@ $cust  = "CUST" . rand(1000, 999999);
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
-            BUE Cinema
+            ARVR Cinema
         </div>
         <div class="admin-login-info">
             <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>

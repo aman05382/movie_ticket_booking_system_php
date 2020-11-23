@@ -24,7 +24,7 @@
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
-            BUE Cinema
+            ARVR Cinema
         </div>
         <div class="admin-login-info">
             <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
@@ -45,9 +45,9 @@
                             <div class="col-sm-8">
                                 <h2>Customer <b>Messages</b></h2>
                             </div>
-                            <div class="col-sm-4">
+                            <!--<div class="col-sm-4">
                                 <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                             <th>SenderLname</th>
                             <th>Sendermail</th>
                             <th>Senderfeedback</th>
-                            <!--<th>Salary</th>-->
+                            <th>More</th
                         </tr>
                         <tbody>
                             <?php
@@ -86,7 +86,8 @@
                                     <td><?php echo $lastname; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $message; ?></td>
-                                    <td><?php echo  "<a href='Deletecontact.php?id=" . $row['msgID'] . "'>delete</a>"; ?></td>
+                                    <!--<td><?php echo  "<a href='Deletecontact.php?id=" . $row['msgID'] . "'>delete</a>"; ?></td>-->
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='Deletecontact.php?id=" . $row['msgID'] . "'>delete</a>"; ?></button></td>
                                 </tr>
 
                             <?php }

@@ -38,7 +38,7 @@ if (isset($_POST['but_logout'])) {
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
-            BUE Cinema
+            ARVR Cinema
         </div>
         <div class="admin-login-info">
             <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
@@ -98,6 +98,7 @@ if (isset($_POST['but_logout'])) {
                             <th>Age</th>
                             <th>Start date</th>
                             <th>Salary</th>
+                            <th>ORDERID</th>
                         </tr>
                         <tbody>
                             <?php
