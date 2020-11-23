@@ -128,7 +128,7 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $bookingid; ?></td>
                                     <td><?php echo $movieID; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
-                                    <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $bookingLName; ?></td>
                                     <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $date; ?></td>
