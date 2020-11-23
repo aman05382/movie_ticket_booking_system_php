@@ -74,14 +74,14 @@ if (isset($_POST['but_logout'])) {
                         <tr>
                             <th>BookingID</th>
                             <th>MovieID</th>
-                            <th>First_Name</th>
+                            <th>Name</th>
                             <th>Phone_Number</th>
                             <th>Email</th>
                             <th>Date</th>
                             <th>Theatre & Type</th>
                             <th>Time</th>
                             <th>ORDERID</th>
-                            <th>MORE</th>
+                            <th colspan=2>MORE</th>
                         </tr>
                         <tbody>
                             <?php
@@ -118,7 +118,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $theatre . ' ' . $type; ?></td>
                                     <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
-                                    <td><button type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a onclick='return confirm('Are you sure, you want to delete it?')' href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
+                                    <td><button type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a onclick='return confirm('Are you sure, you want to delete it?')' href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button></td>
+                                    <td><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button</td>
                                 </tr>
 
                             <?php }
