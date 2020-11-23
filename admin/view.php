@@ -81,6 +81,7 @@ if (isset($_POST['but_logout'])) {
                             <th>Date</th>
                             <th>Theatre</th>
                             <th>ORDERID</th>
+                            <th colspan='2'>MORE</th>
                         </tr>
                         <tbody>
                             <?php
