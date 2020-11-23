@@ -11,6 +11,10 @@ if (isset($_POST['but_logout'])) {
     session_destroy();
     header('Location: index.php');
 }
+
+
+$order = "ORD" . rand(10000, 99999999);
+$cust  = "CUST" . rand(1000, 999999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,26 +62,61 @@ if (isset($_POST['but_logout'])) {
                         <h2>ADD ENTRY</h2>
                         <i class="fas fa-film" style="background-color: #4547cf"></i>
                     </div>
-                    <form action="" method="POST">
-                        
-                        <input placeholder="FULL NAME" type="text" name="movieTitle" required>
-                        <input placeholder="MOVIENAME" type="text" name="movieGenre" required>
-                        <input placeholder="EMAIL" type="number" name="movieDuration" required>
-                        <input placeholder="Release Date" type="date" name="movieRelDate" required>
-                        <input placeholder="THEATRE" type="text" name="movieDirector" required>
-                        <input placeholder="Actors" type="text" name="movieActors" required>
-                        <label>Price</label>
-                        <input placeholder="Main Hall" type="text" name="mainhall" required><br />
-                        <input placeholder="Vip-Hall" type="text" name="viphall" required><br />
-                        <input placeholder="Private Hall" type="text" name="privatehall" required><br />
-                        <br>
-                        <label>Add Poster</label>
-                        <input type="file" name="movieImg" accept="image/*">
-                        <button type="submit" value="submit" name="submit" class="form-btn">ADD ENTRY</button>
-                        <?php
-                        if (isset($_POST['submit'])) {
-                            $insert_query = "INSERT INTO 
-                            movieTable (  movieImg,
+                    <div class="booking-form-container">
+                        <form action="verify.php" method="POST">
+
+
+                            <select name="theatre" required>
+                                <option value="" disabled selected>THEATRE</option>
+                                <option value="main-hall">Main Hall</option>
+                                <option value="vip-hall">VIP Hall</option>
+                                <option value="private-hall">Private Hall</option>
+                            </select>
+
+                            <select name="type" required>
+                                <option value="" disabled selected>TYPE</option>
+                                <option value="3d">3D</option>
+                                <option value="2d">2D</option>
+                                <option value="imax">IMAX</option>
+                                <option value="7d">7D</option>
+                            </select>
+
+                            <select name="date" required>
+                                <option value="" disabled selected>DATE</option>
+                                <option value="12-3">March 12,2019</option>
+                                <option value="13-3">March 13,2019</option>
+                                <option value="14-3">March 14,2019</option>
+                                <option value="15-3">March 15,2019</option>
+                                <option value="16-3">March 16,2019</option>
+                            </select>
+
+                            <select name="hour" required>
+                                <option value="" disabled selected>TIME</option>
+                                <option value="09-00">09:00 AM</option>
+                                <option value="12-00">12:00 AM</option>
+                                <option value="15-00">03:00 PM</option>
+                                <option value="18-00">06:00 PM</option>
+                                <option value="21-00">09:00 PM</option>
+                                <option value="24-00">12:00 PM</option>
+                            </select>
+
+                            <input placeholder="First Name" type="text" name="fName" required>
+
+                            <input placeholder="Last Name" type="text" name="lName">
+
+                            <input placeholder="Phone Number" type="text" name="pNumber" required>
+                            <input placeholder="email" type="email" name="email" required>
+                            <input type="text" name="ORDERID" value="<?php echo $order; ?>">
+                            <input type="text" name="CUSTID" value="<?php echo $cust; ?>">
+
+
+
+                            
+                            <button type="submit" value="submit" name="submit" class="form-btn">ADD ENTRY</button>
+                            <?php
+                                if (isset($_POST['submit'])) {
+                                    $insert_query = "INSERT INTO 
+                                    movieTable (  movieImg,
                                             movieTitle,
                                             movieGenre,
                                             movieDuration,
@@ -87,7 +126,7 @@ if (isset($_POST['but_logout'])) {
                                             mainhall,
                                             viphall,
                                             privatehall)
-                            VALUES (        'img/" . $_POST['movieImg'] . "',
+                                    VALUES (        'img/" . $_POST['movieImg'] . "',
                                             '" . $_POST["movieTitle"] . "',
                                             '" . $_POST["movieGenre"] . "',
                                             '" . $_POST["movieDuration"] . "',
@@ -97,10 +136,12 @@ if (isset($_POST['but_logout'])) {
                                             '" . $_POST["mainhall"] . "',
                                             '" . $_POST["viphall"] . "',
                                             '" . $_POST["privatehall"] . "')";
-                            mysqli_query($link, $insert_query);
-                        }
-                        ?>
-                    </form>
+                                    mysqli_query($link, $insert_query);
+                                }
+                            ?>
+
+                        </form>
+                    </div>
                 </div>
             </div>
             
