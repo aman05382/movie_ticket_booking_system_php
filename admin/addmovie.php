@@ -113,12 +113,13 @@ if (isset($_POST['but_logout'])) {
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>MovieID</th>
+                            <th>MovieTitle</th>
+                            <th>Movie_Genre</th>
+                            <th>Release_date</th>
+                            <th>Director</th>
+                            <th>More</th>
+                            
                         </tr>
                         <tbody>
                             <?php
@@ -143,7 +144,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $genere; ?></td>
                                     <td><?php echo $releasedate; ?></td>
                                     <td><?php echo $movieactor; ?></td>
-                                    <td><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></td>
+                                    <!--<td><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></td>-->
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></button></td>
                                 </tr>
                             <?php }
                             ?>

@@ -62,7 +62,7 @@ if (isset($_POST['but_logout'])) {
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-8">
-                                <h2>Employee <b>Details</b></h2>
+                                <h2>Booking <b>Details</b></h2>
                             </div>
                             <!--<div class="col-sm-4">
                                 <a href='add.php'><button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
@@ -72,12 +72,18 @@ if (isset($_POST['but_logout'])) {
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>BookingID</th>
+                            <th>MovieID</th>
+                            <th>First_Name</th>
+                            <th>Last_Name</th>
+                            <th>Phone_Number</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Theatre</th>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>ORDERID</th>
+                            <th colspan='2'>MORE</th>
                         </tr>
                         <tbody>
                             <?php
@@ -93,16 +99,31 @@ if (isset($_POST['but_logout'])) {
                                 $bookingid = $row['bookingID'];
                                 $movieID = $row['movieID'];
                                 $bookingFName = $row['bookingFName'];
+                                $bookingLName = $row['bookingLName'];
+                                $mobile = $row['bookingPNumber'];
+                                $email = $row['bookingEmail'];
+                                $date = $row['bookingDate'];
+                                $theatre = $row['bookingTheatre'];
+                                $type = $row['bookingType'];
+                                $time = $row['bookingTime'];
                                 $ORDERID = $row['ORDERID'];
+                                
 
                             ?>
                                 <tr align="center">
-                                    <td><?php echo $bookingid; ?></td>
+                                <td><?php echo $bookingid; ?></td>
                                     <td><?php echo $movieID; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $bookingLName; ?></td>
+                                    <td><?php echo $mobile; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td><?php echo $date; ?></td>
+                                    <td><?php echo $theatre; ?></td>
+                                    <td><?php echo $type; ?></td>
+                                    <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
-                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></button></td>
-                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-warning"><?php echo  "<a name='update' href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></button></td>
+                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></button></td>
                                 </tr>
 
                             <?php }

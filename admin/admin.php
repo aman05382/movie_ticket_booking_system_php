@@ -35,6 +35,7 @@ if (isset($_POST['but_logout'])) {
     $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
     $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbacktable"));
     $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movietable"));
+    $userNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM users"));
     ?>
     <div class="admin-section-header">
         <div class="admin-logo">
@@ -64,7 +65,7 @@ if (isset($_POST['but_logout'])) {
             <div class="admin-section-column">
                 <div class="admin-section-panel admin-section-stats">
                     <div class="admin-section-stats-panel">
-                        <i class="fas fa-ticket-alt" style="background-color: #cf4545"></i>
+                        <i class="fa fa-ticket-alt"  style="background-color: #cf4545"></i>
                         <h2 style="color: #cf4545"><?php echo $bookingsNo ?></h2>
                         <h3>Bookings</h3>
                     </div>
@@ -74,9 +75,10 @@ if (isset($_POST['but_logout'])) {
                         <h3>Movies</h3>
                     </div>
                     <div class="admin-section-stats-panel">
-                        <i class="fas fa-ticket-alt" style="background-color: #bb3c95"></i>
-                        <h2 style="color: #bb3c95">dummy</h2>
-                        <h3>Dummy</h3>
+                        <i class="fas fa-users" style="background-color: #000000"></i>
+                        <!--<i class="fas fa-ticket-alt"></i>-->
+                        <h2 style="color: #bb3c95"><?php echo $userNo ?></h2>
+                        <h3>Users</h3>
                     </div>
                     <div class="admin-section-stats-panel" style="border: none">
                         <i class="fas fa-envelope" style="background-color: #3cbb6c"></i>
@@ -92,12 +94,15 @@ if (isset($_POST['but_logout'])) {
                     <div class="admin-panel-section-content">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>BookingID</th>
+                            <th>MovieID</th>
+                            <th>First_Name</th>
+                            <th>Last_Name</th>
+                            <th>Phone_Number</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Theatre</th>
+                            <th>Type</th>
                             <th>ORDERID</th>
                         </tr>
                         <tbody>
@@ -114,9 +119,12 @@ if (isset($_POST['but_logout'])) {
                                 $bookingid = $row['bookingID'];
                                 $movieID = $row['movieID'];
                                 $bookingFName = $row['bookingFName'];
+                                $bookingLName = $row['bookingLName'];
                                 $mobile = $row['bookingPNumber'];
                                 $email = $row['bookingEmail'];
                                 $date = $row['bookingDate'];
+                                $theatre = $row['bookingTheatre'];
+                                $type = $row['bookingType'];
                                 $ORDERID = $row['ORDERID'];
                                 
 
@@ -126,9 +134,12 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $bookingid; ?></td>
                                     <td><?php echo $movieID; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $bookingLName; ?></td>
                                     <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $date; ?></td>
+                                    <td><?php echo $theatre; ?></td>
+                                    <td><?php echo $type; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                 </tr>
 
