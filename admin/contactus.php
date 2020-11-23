@@ -61,7 +61,7 @@
                         <br>
                         <label>Add Poster</label>
                         <input type="file" name="movieImg" accept="image/*">
-                        <button type="submit" value="submit" name="submit" class="form-btn">Add Movie</button>
+                        <button type="submit" value="submit" name="submit" class="form-btn">Add Message</button>
                         <?php
                         if (isset($_POST['submit'])) {
                             $insert_query = "INSERT INTO 
