@@ -26,6 +26,7 @@ if (isset($_POST['but_logout'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,14 +35,21 @@ if (isset($_POST['but_logout'])) {
             BUE Cinema
         </div>
         <div class="admin-login-info">
+            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
+            <form method='post' action="">
+                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
+            </form>
+            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
+        </div>
+        <!--<div class="admin-login-info">
             <i class="far fa-bell admin-notification-button"></i>
             <i class="far fa-comment-alt"></i>
             <a href="#">Welcome, Admin</a>
             <form method='post' action="">
-                <input type="submit" value="Logout" name="but_logout">
+                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
             <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>
+        </div>-->
     </div>
     <div class="admin-container">
         <div class="admin-section admin-section1 ">
