@@ -113,12 +113,13 @@ if (isset($_POST['but_logout'])) {
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>MovieID</th>
+                            <th>MovieTitle</th>
+                            <th>Movie_Genre</th>
+                            <th>Release_date</th>
+                            <th>Director</th>
+                            <th>More</th>
+                            
                         </tr>
                         <tbody>
                             <?php

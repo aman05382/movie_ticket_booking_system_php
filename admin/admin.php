@@ -92,12 +92,12 @@ if (isset($_POST['but_logout'])) {
                     <div class="admin-panel-section-content">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>BookingID</th>
+                            <th>MovieID</th>
+                            <th>First_Name</th>
+                            <th>Last_Name</th>
+                            <th>Phone_Number</th>
+                            <th>Email</th>
                             <th>ORDERID</th>
                         </tr>
                         <tbody>
