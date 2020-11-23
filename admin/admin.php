@@ -98,6 +98,7 @@ if (isset($_POST['but_logout'])) {
                             <th>Last_Name</th>
                             <th>Phone_Number</th>
                             <th>Email</th>
+                            <th>Date</th>
                             <th>ORDERID</th>
                         </tr>
                         <tbody>
@@ -114,6 +115,7 @@ if (isset($_POST['but_logout'])) {
                                 $bookingid = $row['bookingID'];
                                 $movieID = $row['movieID'];
                                 $bookingFName = $row['bookingFName'];
+                                $bookingLName = $row['bookingLName'];
                                 $mobile = $row['bookingPNumber'];
                                 $email = $row['bookingEmail'];
                                 $date = $row['bookingDate'];
@@ -125,6 +127,7 @@ if (isset($_POST['but_logout'])) {
                                 <tr align="center">
                                     <td><?php echo $bookingid; ?></td>
                                     <td><?php echo $movieID; ?></td>
+                                    <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $mobile; ?></td>
                                     <td><?php echo $email; ?></td>
