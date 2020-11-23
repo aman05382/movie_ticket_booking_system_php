@@ -60,11 +60,11 @@ if (isset($_POST['but_logout'])) {
                     </div>
                     <form action="" method="POST">
                         
-                        <input placeholder="Title" type="text" name="movieTitle" required>
-                        <input placeholder="Genre" type="text" name="movieGenre" required>
-                        <input placeholder="Duration" type="number" name="movieDuration" required>
+                        <input placeholder="FULL NAME" type="text" name="movieTitle" required>
+                        <input placeholder="MOVIENAME" type="text" name="movieGenre" required>
+                        <input placeholder="EMAIL" type="number" name="movieDuration" required>
                         <input placeholder="Release Date" type="date" name="movieRelDate" required>
-                        <input placeholder="Director" type="text" name="movieDirector" required>
+                        <input placeholder="THEATRE" type="text" name="movieDirector" required>
                         <input placeholder="Actors" type="text" name="movieActors" required>
                         <label>Price</label>
                         <input placeholder="Main Hall" type="text" name="mainhall" required><br />

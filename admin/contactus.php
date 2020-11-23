@@ -37,61 +37,65 @@
     <div class="admin-container">
         
         <?php include('sidebar.php'); ?>
-        <div class="admin-section admin-section2">
-            <div class="admin-section-column">
-                
-                
-                <div class="admin-section-panel admin-section-panel2">
-                    <div class="admin-panel-section-header">
-                        <h2>ADD ENTRY</h2>
-                        <i class="fas fa-film" style="background-color: #4547cf"></i>
+        <div class="container-lg">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Customer <b>Messages</b></h2>
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                            </div>
+                        </div>
                     </div>
-                    <form action="" method="POST">
-                        
-                        <input placeholder="Title" type="text" name="movieTitle" required>
-                        <input placeholder="Genre" type="text" name="movieGenre" required>
-                        <input placeholder="Duration" type="number" name="movieDuration" required>
-                        <input placeholder="Release Date" type="date" name="movieRelDate" required>
-                        <input placeholder="Director" type="text" name="movieDirector" required>
-                        <input placeholder="Actors" type="text" name="movieActors" required>
-                        <label>Price</label>
-                        <input placeholder="Main Hall" type="text" name="mainhall" required><br />
-                        <input placeholder="Vip-Hall" type="text" name="viphall" required><br />
-                        <input placeholder="Private Hall" type="text" name="privatehall" required><br />
-                        <br>
-                        <label>Add Poster</label>
-                        <input type="file" name="movieImg" accept="image/*">
-                        <button type="submit" value="submit" name="submit" class="form-btn">Add Message</button>
-                        <?php
-                        if (isset($_POST['submit'])) {
-                            $insert_query = "INSERT INTO 
-                            movieTable (  movieImg,
-                                            movieTitle,
-                                            movieGenre,
-                                            movieDuration,
-                                            movieRelDate,
-                                            movieDirector,
-                                            movieActors,
-                                            mainhall,
-                                            viphall,
-                                            privatehall)
-                            VALUES (        'img/" . $_POST['movieImg'] . "',
-                                            '" . $_POST["movieTitle"] . "',
-                                            '" . $_POST["movieGenre"] . "',
-                                            '" . $_POST["movieDuration"] . "',
-                                            '" . $_POST["movieRelDate"] . "',
-                                            '" . $_POST["movieDirector"] . "',
-                                            '" . $_POST["movieActors"] . "',
-                                            '" . $_POST["mainhall"] . "',
-                                            '" . $_POST["viphall"] . "',
-                                            '" . $_POST["privatehall"] . "')";
-                            mysqli_query($link, $insert_query);
-                        }
-                        ?>
-                    </form>
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>MessageId</th>
+                            <th>SenderFname</th>
+                            <th>SenderLname</th>
+                            <th>SenderLname</th>
+                            <th>SenderLname</th>
+                            <!--<th>Salary</th>-->
+                        </tr>
+                        <tbody>
+                            <?php
+                            $host = "localhost"; /* Host name */
+                            $user = "root"; /* User */
+                            $password = ""; /* Password */
+                            $dbname = "cinema_db"; /* Database name */
+
+                            $con = mysqli_connect($host, $user, $password, $dbname);
+                            $select = "SELECT * FROM `bookingtable`";
+                            $run = mysqli_query($con, $select);
+                            while ($row = mysqli_fetch_array($run)) {
+                                $bookingid = $row['bookingID'];
+                                $movieID = $row['movieID'];
+                                $bookingFName = $row['bookingFName'];
+                                $ORDERID = $row['ORDERID'];
+                                
+
+
+                            ?>
+                                <tr align="center">
+                                    <td><?php echo $bookingid; ?></td>
+                                    <td><?php echo $movieID; ?></td>
+                                    <td><?php echo $bookingFName; ?></td>
+                                    <td><?php echo $ORDERID; ?></td>
+                                    <td><?php echo  "<a href='Deletecontact.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
+                                    <!--<td><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></td>-->
+
+                                </tr>
+
+                            <?php }
+                            ?>
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
-            
         </div>
     </div>
 
