@@ -104,7 +104,7 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                     <td><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
-                                    <td><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></td>
+                                    <td><?php echo  "<a name='update' href='editBooking.php?id=" . $row['bookingID'] . "'>edit</a>"; ?></td>
 
                                 </tr>
 

@@ -12,9 +12,6 @@ if (isset($_POST['but_logout'])) {
     header('Location: index.php');
 }
 
-
-$order = "ORD" . rand(10000, 99999999);
-$cust  = "CUST" . rand(1000, 999999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +40,9 @@ $cust  = "CUST" . rand(1000, 999999);
             BUE Cinema
         </div>
         <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
+            <div style="padding: 0 20px;">
+                <h2><a href="#">Admin Panel</a></h2>
+            </div>
             <form method='post' action="">
                 <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
             </form>
@@ -51,12 +50,12 @@ $cust  = "CUST" . rand(1000, 999999);
         </div>
     </div>
     <div class="admin-container">
-        
+
         <?php include('sidebar.php'); ?>
         <div class="admin-section admin-section2">
             <div class="admin-section-column">
-                
-                
+
+
                 <div class="admin-section-panel admin-section-panel2">
                     <div class="admin-panel-section-header">
                         <h2>ADD ENTRY</h2>
@@ -106,45 +105,20 @@ $cust  = "CUST" . rand(1000, 999999);
 
                             <input placeholder="Phone Number" type="text" name="pNumber" required>
                             <input placeholder="email" type="email" name="email" required>
-                            <input type="text" name="ORDERID" value="<?php echo $order; ?>">
-                            <input type="text" name="CUSTID" value="<?php echo $cust; ?>">
+
+                            <select name="type" name="payment" required>
+                                <option value="" disabled selected>PAYMENT</option>
+                                <option value="CASH">CASH</option>
+                            </select>
 
 
-
-                            
                             <button type="submit" value="submit" name="submit" class="form-btn">ADD ENTRY</button>
-                            <?php
-                                if (isset($_POST['submit'])) {
-                                    $insert_query = "INSERT INTO 
-                                    movieTable (  movieImg,
-                                            movieTitle,
-                                            movieGenre,
-                                            movieDuration,
-                                            movieRelDate,
-                                            movieDirector,
-                                            movieActors,
-                                            mainhall,
-                                            viphall,
-                                            privatehall)
-                                    VALUES (        'img/" . $_POST['movieImg'] . "',
-                                            '" . $_POST["movieTitle"] . "',
-                                            '" . $_POST["movieGenre"] . "',
-                                            '" . $_POST["movieDuration"] . "',
-                                            '" . $_POST["movieRelDate"] . "',
-                                            '" . $_POST["movieDirector"] . "',
-                                            '" . $_POST["movieActors"] . "',
-                                            '" . $_POST["mainhall"] . "',
-                                            '" . $_POST["viphall"] . "',
-                                            '" . $_POST["privatehall"] . "')";
-                                    mysqli_query($link, $insert_query);
-                                }
-                            ?>
 
                         </form>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 

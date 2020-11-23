@@ -1,10 +1,3 @@
-<?php
-require('config.php');
-$id = $_REQUEST['bookingID'];
-$query = "SELECT * from bookingtable where bookingID='" . $id . "'";
-$result = mysqli_query($con, $query);
-$row = mysqli_fetch_assoc($result);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,37 +27,43 @@ $row = mysqli_fetch_assoc($result);
     <div class="admin-container">
         <?php include('sidebar.php'); ?>
     </div>
-    <div class="form">
-        <p><!--<a href="view.php">Dashboard</a>-->
-            |<h1>Update Record</h1>
-        <?php
-        $status = "";
-        if (isset($_POST['new']) && $_POST['new'] == 1) {
-            $id = $_REQUEST['bookingID'];
-            $trn_date = date("Y-m-d H:i:s");
-            $name = $_REQUEST['name'];
-            $age = $_REQUEST['age'];
-            $submittedby = $_SESSION["username"];
-            $update = "update new_record set trn_date='" . $trn_date . "',
-name='" . $name . "', age='" . $age . "',
-submittedby='" . $submittedby . "' where bookingID='" . $id . "'";
-            mysqli_query($con, $update);
-            $status = "Record Updated Successfully. </br></br>
-<a href='view.php'>View Updated Record</a>";
-            echo '<p style="color:#FF0000;">' . $status . '</p>';
-        } else {
-        ?>
-            <div>
-                <form name="form" method="post" action="">
-                    <input type="hidden" name="new" value="1" />
-                    <input name="id" type="hidden" value="<?php echo $row['bookingID']; ?>" />
-                    <p><input type="text" name="name" placeholder="Enter Name" required value="<?php echo $row['name']; ?>" /></p>
-                    <p><input type="text" name="age" placeholder="Enter Age" required value="<?php echo $row['age']; ?>" /></p>
-                    <p><input name="submit" type="submit" value="Update" /></p>
-                </form>
-            <?php } ?>
-            </div>
-    </div>
+    <?php
+
+// include "dbConn.php"; // Using database connection file here
+$link = mysqli_connect("localhost", "root", "", "cinema_db");
+$id = $_GET['id']; // get id through query string
+
+$qry = mysqli_query($link,"select * from bookingtable where id='$id'"); // select query
+
+$data = mysqli_fetch_array($qry); // fetch data
+
+if(isset($_POST['update'])) // when click on Update button
+{
+    $fullname = $_POST['fullname'];
+    $age = $_POST['age'];
+	
+    $edit = mysqli_query($db,"update tblemp set fullname='$fullname', age='$age' where id='$id'");
+	
+    if($edit)
+    {
+        mysqli_close($db); // Close connection
+        header("location:all_records.php"); // redirects to all records page
+        exit;
+    }
+    else
+    {
+        echo "error";
+    }    	
+}
+?>
+
+<h3>Update Data</h3>
+
+<form method="POST">
+  <input type="text" name="fullname" value="<?php echo $data['fullname'] ?>" placeholder="Enter Full Name" Required>
+  <input type="text" name="age" value="<?php echo $data['age'] ?>" placeholder="Enter Age" Required>
+  <input type="submit" name="update" value="Update">
+</form>
 </body>
 
 </html>

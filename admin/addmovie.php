@@ -128,23 +128,22 @@ if (isset($_POST['but_logout'])) {
                             $dbname = "cinema_db"; /* Database name */
 
                             $con = mysqli_connect($host, $user, $password, $dbname);
-                            $select = "SELECT * FROM `bookingtable`";
+                            $select = "SELECT * FROM `movietable`";
                             $run = mysqli_query($con, $select);
                             while ($row = mysqli_fetch_array($run)) {
+                                $ID = $row['movieID'];
                                 $title = $row['movieTitle'];
-                                $movieID = $row['movieID'];
-                                $bookingFName = $row['bookingFName'];
-                                $ORDERID = $row['ORDERID'];
-
-
-
+                                $genere = $row['movieGenre'];
+                                $releasedate = $row['movieRelDate'];
+                                $movieactor = $row['movieDirector'];
                             ?>
                                 <tr align="center">
-                                    <td><?php echo $bookingid; ?></td>
-                                    <td><?php echo $movieID; ?></td>
-                                    <td><?php echo $bookingFName; ?></td>
-                                    <td><?php echo $ORDERID; ?></td>
-                                    <td><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "'>delete</a>"; ?></td>
+                                    <td><?php echo $ID; ?></td>
+                                    <td><?php echo $title; ?></td>
+                                    <td><?php echo $genere; ?></td>
+                                    <td><?php echo $releasedate; ?></td>
+                                    <td><?php echo $movieactor; ?></td>
+                                    <td><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></td>
                                 </tr>
                             <?php }
                             ?>
