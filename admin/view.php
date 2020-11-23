@@ -30,29 +30,9 @@ if (isset($_POST['but_logout'])) {
 </head>
 
 <body>
-    <div class="admin-section-header">
-        <div class="admin-logo">
-            ARVR Cinema
-        </div>
-        <div class="admin-login-info">
-            <div style="padding: 0 20px;">
-                <h2><a href="#">Admin Panel</a></h2>
-            </div>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>
-        <!--<div class="admin-login-info">
-            <i class="far fa-bell admin-notification-button"></i>
-            <i class="far fa-comment-alt"></i>
-            <a href="#">Welcome, Admin</a>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>-->
-    </div>
+    
+    <?php include('header.php'); ?>
+
     <div class="admin-container">
 
         <?php include('sidebar.php'); ?>
@@ -72,15 +52,15 @@ if (isset($_POST['but_logout'])) {
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>BookingID</th>
-                            <th>MovieID</th>
+                            <th>Booking ID</th>
+                            <th>Movie ID</th>
                             <th>Name</th>
-                            <th>Phone_Number</th>
+                            <th>Phone Number</th>
                             <th>Email</th>
                             <th>Date</th>
                             <th>Theatre & Type</th>
                             <th>Time</th>
-                            <th>ORDERID</th>
+                            <th>Order ID</th>
                             <th colspan=2>MORE</th>
                         </tr>
                         <tbody>

@@ -6,11 +6,6 @@ if (!isset($_SESSION['uname'])) {
     header('Location: index.php');
 }
 
-// logout
-if (isset($_POST['but_logout'])) {
-    session_destroy();
-    header('Location: index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,27 +32,9 @@ if (isset($_POST['but_logout'])) {
     $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movietable"));
     $userNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM users"));
     ?>
-    <div class="admin-section-header">
-        <div class="admin-logo">
-            ARVR Cinema
-        </div>
-        <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>
-        <!--<div class="admin-login-info">
-            <i class="far fa-bell admin-notification-button"></i>
-            <i class="far fa-comment-alt"></i>
-            <a href="#">Welcome, Admin</a>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>-->
-    </div>
+
+    <?php include('header.php'); ?>
+
     <div class="admin-container">
 
         <?php include('sidebar.php'); ?>
@@ -94,16 +71,16 @@ if (isset($_POST['but_logout'])) {
                     <div class="admin-panel-section-content">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>BookingID</th>
-                            <th>MovieID</th>
-                            <th>First_Name</th>
-                            <th>Last_Name</th>
-                            <th>Phone_Number</th>
+                            <th>Booking ID</th>
+                            <th>Movie ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone Number</th>
                             <th>Email</th>
                             <th>Date</th>
                             <th>Theatre</th>
                             <th>Type</th>
-                            <th>ORDERID</th>
+                            <th>Order ID</th>
                         </tr>
                         <tbody>
                             <?php

@@ -15,18 +15,9 @@
 </head>
 
 <body>
-    <div class="admin-section-header">
-        <div class="admin-logo">
-            ARVR Cinema
-        </div>
-        <div class="admin-login-info">
-            <div style="padding: 0 20px;"><h2><a href="#">Admin Panel</a></h2></div>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>
-    </div>
+    
+    <?php include('header.php'); ?>
+    
     <div class="admin-container">
         
         <?php include('sidebar.php'); ?>
@@ -46,12 +37,12 @@
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>MessageId</th>
-                            <th>First_Name</th>
-                            <th>Last_Name</th>
+                            <th>Message ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
                             <th>Feedback</th>
-                            <th>More</th
+                            <th>More</th>
                         </tr>
                         <tbody>
                             <?php
@@ -69,8 +60,6 @@
                                 $lastname = $row['senderlName'];
                                 $email = $row['sendereMail'];
                                 $message = $row['senderfeedback'];
-                                
-
 
                             ?>
                                 <tr align="center">

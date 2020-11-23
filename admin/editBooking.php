@@ -45,21 +45,8 @@ if (isset($_POST['update'])) // when click on Update button
 }
 ?>
 
-    <div class="admin-section-header">
-        <div class="admin-logo">
-            BUE Cinema
-        </div>
-        <div class="admin-login-info">
-            <div style="padding: 0 20px;">
-                <h2><a href="#">Admin Panel</a></h2>
-            </div>
-            <form method='post' action="">
-                <input type="submit" value="Logout" class="btn btn-outline-warning" name="but_logout">
-            </form>
-            <img class="admin-user-avatar" src="../img/avatar.png" alt="">
-        </div>
+    <?php include('header.php'); ?>
 
-    </div>
     <div class="admin-container">
         <?php include('sidebar.php'); ?>
         <div class="admin-section admin-section2">
