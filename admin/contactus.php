@@ -47,10 +47,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
                             <th>MessageId</th>
-                            <th>SenderFname</th>
-                            <th>SenderLname</th>
-                            <th>Sendermail</th>
-                            <th>Senderfeedback</th>
+                            <th>First_Name</th>
+                            <th>Last_Name</th>
+                            <th>Email</th>
+                            <th>Feedback</th>
                             <th>More</th
                         </tr>
                         <tbody>
