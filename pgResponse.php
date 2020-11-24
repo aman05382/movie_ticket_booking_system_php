@@ -21,42 +21,66 @@ $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecks
 if ($isValidChecksum == "TRUE") {
 	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
-		echo "<b>Transaction status is success</b>" . "<br/>";
+		echo "<b>Transaction status is su</b>" . "<br/>";
 
 
-		if (isset($_POST['ORDERID'], $_POST['MID'], $_POST['TXNID'], $_POST['TXNAMOUNT'], $_POST['PAYMENTMODE'], $_POST['CURRENCY'], $_POST['TXNDATE'], $_POST['STATUS'], $_POST['RESPCODE'], $_POST['RESPMSG'], $_POST['GATEWAYNAME'], $_POST['BANKTXNID'], $_POST['BANKNAME'], $_POST['CHECKSUMHASH'])) {
-			session_start();
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "cinema_db";
+		session_start();
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "cinema_db";
 
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
 
 
-			if (isset($_SESSION['THEATRE'])) {
-				echo $_SESSION['THEATRE'];
-			}
+		if (isset($_SESSION['MOVIEID'], $_SESSION['THEATRE'], $_SESSION['BOOKING_TYPE'], $_SESSION['BOOKING_DATE'], $_SESSION['BOOKING_TIME'], $_SESSION['FNAME'], $_SESSION['LNAME'], $_SESSION['MOBILE'], $_SESSION['EMAIL'])) {
+			// 	echo  $_SESSION['BOOKING_TYPE'];
+			// }
+			$t1 = $_SESSION['MOVIEID'];
+			$t6 = $_SESSION['FNAME'];
+			$t7 = $_SESSION['LNAME'];
+			$t9 = $_SESSION['EMAIL'];
+			$t8 = $_SESSION['MOBILE'];
+			$t2 = $_SESSION['THEATRE'];
+			$t3 = $_SESSION['BOOKING_TYPE'];
+			$t4 = $_SESSION['BOOKING_DATE'];
+			$t5 = $_SESSION['BOOKING_TIME'];
+			$t10 = $_POST['ORDERID'];
+
+			echo "$t1";
+			$qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`)VALUES 
+('$t1','$t2','$t3','$t4','$t5','$t6','$t7','$t8','$t9','$t10')";
 
 			// $qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES 
-			// ('" . $_SESSION['MOVIEID'] . "','" . $_SESSION['THEATRE'] . "','" . $_SESSION['BOOKING_TYPE'] . "','" . $_SESSION['BOOKING_DATE'] . "','" . $_SESSION['BOOKING_TIME'] . "','" . $_SESSION['FNAME'] . "','" . $_SESSION['LNAME'] . "','" . $_SESSION['MOBILE'] . "','" . $_SESSION['EMAIL'] . "', '" . $_POST['ORDERID'] . "')";
+			// ('" . $_SESSION['MOVIEID'] . "','" . $_SESSION['THEATRE'] . "','$bt','" . $_SESSION['BOOKING_DATE'] . "','" . $_SESSION['BOOKING_TIME'] . "','" . $_SESSION['FNAME'] . "','" . $_SESSION['LNAME'] . "','" . $_SESSION['MOBILE'] . "','" . $_SESSION['EMAIL'] . "', '" . $_POST['ORDERID'] . "')";
+			echo "$qry";
+
+			$payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
+		('" . $_POST['ORDERID'] . "','" . $_POST['MID'] . "', '" . $_POST['TXNID'] . "','" . $_POST['TXNAMOUNT'] . "','" . $_POST['PAYMENTMODE'] . "','" . $_POST['CURRENCY'] . "','" . $_POST['TXNDATE'] . "','" . $_POST['STATUS'] . "','" . $_POST['RESPCODE'] . "','" . $_POST['RESPMSG'] . "','" . $_POST['GATEWAYNAME'] . "','" . $_POST['BANKTXNID'] . "','" . $_POST['BANKNAME'] . "','" . $_POST['CHECKSUMHASH'] . "')";
 
 
-			// $payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
-			// ('" . $_POST['ORDERID'] . "','" . $_POST['MID'] . "', '" . $_POST['TXNID'] . "','" . $_POST['TXNAMOUNT'] . "','" . $_POST['PAYMENTMODE'] . "','" . $_POST['CURRENCY'] . "','" . $_POST['TXNDATE'] . "','" . $_POST['STATUS'] . "','" . $_POST['RESPCODE'] . "','" . $_POST['RESPMSG'] . "','" . $_POST['GATEWAYNAME'] . "','" . $_POST['BANKTXNID'] . "','" . $_POST['BANKNAME'] . "','" . $_POST['CHECKSUMHASH'] . "')";
+			echo "$payment";
+			$rs = mysqli_query($conn, $qry);
 
-			// mysqli_query($conn, $qry);
-			// mysqli_query($conn, $payment);
-
-			//push manager
-			// header('Location: reciept.php?id=' . $_POST['ORDERID']);
-
+			if ($rs) {
+				header('Location: reciept.php?id=' . $_POST['ORDERID']);
+			} else {
+				echo "false";
+			}
 		}
+		// 	if (mysqli_query($conn, $payment)) {
+		// 		echo "suck";
+		// 	} else {
+		// 		echo "fuck";
+		// 	}
+		// }
+		//push manager
+		// header('Location: reciept.php?id=' . $_POST['ORDERID']);
 
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
