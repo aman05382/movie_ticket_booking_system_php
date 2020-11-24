@@ -2,7 +2,7 @@
 <div class="footer-brand">
     <a href="index.php">
         <h1 class="footer-heading">ARVR Cinema</h1>
-    </a>
+    </a> 
 </div>    
 </div>
 <div class="footer-section footer-section2">
