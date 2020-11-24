@@ -39,8 +39,8 @@ if ($isValidChecksum == "TRUE") {
 			}
 
 
-			if (isset($_SESSION['MOVIEID'])) {
-				echo $_SESSION['MOVIEID'];
+			if (isset($_SESSION['THEATRE'])) {
+				echo $_SESSION['THEATRE'];
 			}
 
 			// $qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES 

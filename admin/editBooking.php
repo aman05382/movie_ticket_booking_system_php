@@ -24,6 +24,7 @@ $qry = mysqli_query($link, $setting); // select query
 //     $phone_mobile = $row['bookingPNumber'];
 //     $email1 = $row['bookingEmail'];
 // }
+
 $data = mysqli_fetch_array($qry); // fetch data
 
 if (isset($_POST['update'])) // when click on Update button
