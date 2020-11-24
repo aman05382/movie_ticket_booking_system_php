@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 01:20 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Nov 24, 2020 at 06:59 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -47,7 +46,10 @@ CREATE TABLE `bookingtable` (
 --
 
 INSERT INTO `bookingtable` (`bookingID`, `movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES
-(38, 1, 'private-hall', '7d', '13-3', '15-00', 'Roshan', 'Bonde', '7448042514', 'robinbond2k18@gmail.com', 'ORD74294887');
+(56, 2, 'main-hall', '2d', '14-3', '15-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD34346384'),
+(57, 2, 'main-hall', '2d', '13-3', '09-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD41472722'),
+(58, 2, 'private-hall', '3d', '13-3', '15-00', 'Prajwal', 'Patil', '09657871360', 'prajwal.u.patil@gmail.com', 'ORD34629072'),
+(59, 2, 'main-hall', '3d', '12-3', '12-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD21922807');
 
 -- --------------------------------------------------------
 
@@ -107,36 +109,6 @@ INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `mo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
---
-
-CREATE TABLE `payment` (
-  `ORDERID` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `MID` varchar(255) NOT NULL,
-  `TXNID` varchar(255) NOT NULL,
-  `TXNAMOUNT` varchar(255) NOT NULL,
-  `PAYMENTMODE` varchar(255) NOT NULL,
-  `CURRENCY` varchar(255) NOT NULL,
-  `TXNDATE` varchar(255) NOT NULL,
-  `STATUS` varchar(255) NOT NULL,
-  `RESPCODE` varchar(255) NOT NULL,
-  `RESPMSG` varchar(255) NOT NULL,
-  `GATEWAYNAME` varchar(255) NOT NULL,
-  `BANKTXNID` varchar(255) NOT NULL,
-  `BANKNAME` varchar(255) NOT NULL,
-  `CHECKSUMHASH` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES
-('ORD74294887', 'BvuNYX16485310423471', '20201122111212800110168967602099353', '900.00', 'NB', 'INR', '2020-11-22 22:52:27.0', 'TXN_SUCCESS', '01', 'Txn Success', 'AXIS', '12097079902', 'AXIS', 'mzBIZdaiA+Gfw9Yluagan+n8wM4O8JI/WdKryykKMQYtCA/ZBa5J1recZP6o6XL5j735yb8e+VxPdBNZE/GUwXf9RWJDawzsOZ76syjMkjM=');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -182,12 +154,6 @@ ALTER TABLE `movietable`
   ADD UNIQUE KEY `movieID` (`movieID`);
 
 --
--- Indexes for table `payment`
---
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`ORDERID`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -201,7 +167,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `feedbacktable`
@@ -229,7 +195,6 @@ ALTER TABLE `users`
 -- Constraints for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  ADD CONSTRAINT `foreign_key_ORDERID` FOREIGN KEY (`ORDERID`) REFERENCES `payment` (`ORDERID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `foreign_key_movieID` FOREIGN KEY (`movieID`) REFERENCES `movietable` (`movieID`);
 COMMIT;
 
