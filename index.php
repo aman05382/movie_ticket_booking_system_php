@@ -49,7 +49,7 @@
             ?>
         </div>
     </div>
-    
+
     <div id="home-section-2" class="services-section">
         <h1>How it works</h1>
         <h3>3 Simple steps to book your favourit movie!</h3>
@@ -59,17 +59,20 @@
                 <div class="service-item-icon">
                     <i class="fas fa-4x fa-video"></i>
                 </div>
-                <h2>1. Choose your favourite movie</h2></div>
+                <h2>1. Choose your favourite movie</h2>
+            </div>
             <div class="service-item">
                 <div class="service-item-icon">
                     <i class="fas fa-4x fa-credit-card"></i>
                 </div>
-                <h2>2. Pay for your tickets</h2></div>
+                <h2>2. Pay for your tickets</h2>
+            </div>
             <div class="service-item">
                 <div class="service-item-icon">
                     <i class="fas fa-4x fa-theater-masks"></i>
                 </div>
-                <h2>3. Pick your seats & Enjoy watching</h2></div>
+                <h2>3. Pick your seats & Enjoy watching</h2>
+            </div>
             <div class="service-item"></div>
             <div class="service-item"></div>
         </div>
