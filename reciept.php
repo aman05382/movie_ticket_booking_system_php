@@ -293,10 +293,11 @@
 		?>
 
 	</div>
-
-	<input type="button" class="btn btn-danger" onClick="window.print()" value="Print Recipt!" />
-	<a type="button" class="btn btn-success" href='http://localhost/Railway_Reservation_System/'>Home-Page</a>
-
+	
+	<div style="max-width: 300px; margin:auto; padding: 30px;">
+		<input type="button" class="btn btn-danger" onClick="window.print()" value="Print Recipt!" />
+		<a type="button" class="btn btn-success" href='http://localhost/Railway_Reservation_System/'>Home-Page</a>
+	</div>
 
 
 	<!-- Optional JavaScript -->
