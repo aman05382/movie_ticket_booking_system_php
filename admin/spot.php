@@ -23,18 +23,18 @@ if (isset($_POST['submit'])) {
     $time = $_POST['hour'];
     $movieid = $_POST['movie_id'];
     $amount = $_POST['cash'];
-    $order = "ORD" . rand(10000, 99999999);
+    $order = "cash";
 
 
 
-    $qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES  
-			('$movieid', '$theatre', '$type', '$date', '$time', '$fname', '$lname', '$mobile','$email', '$order')";
+    $qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`,`amount`, `ORDERID`) VALUES  
+			('$movieid', '$theatre', '$type', '$date', '$time', '$fname', '$lname', '$mobile','$email', '$amount' ,'$order')";
 
 
     $rs = mysqli_query($conn, $qry);
 
-    $payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
-    ('$order', NULL, NULL, '$amount', 'CASH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+    // $payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
+    // ('$order', NULL, NULL, '$amount', 'CASH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
 
     if ($rs) {
         // if (mysqli_query($conn, $payment)) {

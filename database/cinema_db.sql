@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 06:59 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Nov 25, 2020 at 01:13 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,18 +38,10 @@ CREATE TABLE `bookingtable` (
   `bookingLName` varchar(100) DEFAULT NULL,
   `bookingPNumber` varchar(12) NOT NULL,
   `bookingEmail` varchar(255) NOT NULL,
-  `ORDERID` varchar(255) NOT NULL
+  `amount` varchar(255) NOT NULL,
+  `ORDERID` varchar(255) NOT NULL,
+  `DATE-TIME` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `bookingtable`
---
-
-INSERT INTO `bookingtable` (`bookingID`, `movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`) VALUES
-(56, 2, 'main-hall', '2d', '14-3', '15-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD34346384'),
-(57, 2, 'main-hall', '2d', '13-3', '09-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD41472722'),
-(58, 2, 'private-hall', '3d', '13-3', '15-00', 'Prajwal', 'Patil', '09657871360', 'prajwal.u.patil@gmail.com', 'ORD34629072'),
-(59, 2, 'main-hall', '3d', '12-3', '12-00', 'Prajwal', 'Patil', '+91965787136', 'prajwal.u.patil@gmail.com', 'ORD21922807');
 
 -- --------------------------------------------------------
 
@@ -64,15 +56,6 @@ CREATE TABLE `feedbacktable` (
   `sendereMail` varchar(100) NOT NULL,
   `senderfeedback` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `feedbacktable`
---
-
-INSERT INTO `feedbacktable` (`msgID`, `senderfName`, `senderlName`, `sendereMail`, `senderfeedback`) VALUES
-(1, 'Ahmed', 'Ali', 'Ahmed@mail.com', 'Hello first'),
-(2, 'Ahmed', 'Ali', 'asa@as.com', 'asdas'),
-(3, 'Roshan', 'Bonde', 'robinbond2k18@gmail.com', 'Very bad arrangement.\r\n\r\nWorsts I have ever seen.\r\n\r\nBastards!!!!!!!');
 
 -- --------------------------------------------------------
 
@@ -104,7 +87,8 @@ INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `mo
 (3, 'img/movie-poster-3.jpg', 'The Lego Movie', 'Animation, Action, Adventure', 110, '2014-02-07', 'Phil Lord, Christopher Miller', 'Chris Pratt, Will Ferrell, Elizabeth Banks', 0, 0, 0),
 (4, 'img/movie-poster-4.jpg', 'Nadi Elregal Elserri ', 'Comedy', 105, '2019-01-23', ' Ayman Uttar', 'Karim Abdul Aziz, Ghada Adel, Maged El Kedwany, Nesreen Tafesh, Bayyumy Fouad, Moataz El Tony ', 0, 0, 0),
 (5, 'img/movie-poster-5.jpg', 'VICE', 'Biography, Comedy, Drama', 132, '2018-12-25', 'Adam McKay', 'Christian Bale, Amy Adams, Steve Carell', 0, 0, 0),
-(6, 'img/movie-poster-6.jpg', 'The Vanishing', 'Crime, Mystery, Thriller', 107, '2019-01-04', 'Kristoffer Nyholm', 'Gerard Butler, Peter Mullan, Connor Swindells', 0, 0, 0);
+(6, 'img/movie-poster-6.jpg', 'The Vanishing', 'Crime, Mystery, Thriller', 107, '2019-01-04', 'Kristoffer Nyholm', 'Gerard Butler, Peter Mullan, Connor Swindells', 0, 0, 0),
+(68, 'img/ER.png', 'aman', 'dcdc', 5, '2020-11-19', 'cc', 'cc', 500, 900, 1500);
 
 -- --------------------------------------------------------
 
@@ -167,7 +151,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookingtable`
 --
 ALTER TABLE `bookingtable`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `feedbacktable`
@@ -179,7 +163,7 @@ ALTER TABLE `feedbacktable`
 -- AUTO_INCREMENT for table `movietable`
 --
 ALTER TABLE `movietable`
-  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `users`

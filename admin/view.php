@@ -61,7 +61,9 @@ if (isset($_POST['but_logout'])) {
                             <th>Theatre & Type</th>
                             <th>Time</th>
                             <th>Order ID</th>
-                            <th colspan=2>MORE</th>
+                            <th>Amount</th>
+                            <th>More</th>
+
                         </tr>
                         <tbody>
                             <?php
@@ -85,6 +87,8 @@ if (isset($_POST['but_logout'])) {
                                 $type = $row['bookingType'];
                                 $time = $row['bookingTime'];
                                 $ORDERID = $row['ORDERID'];
+                                $amount = $row['amount'];
+
                                 
 
                             ?>
@@ -98,8 +102,9 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $theatre . ' ' . $type; ?></td>
                                     <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
-                                    <td><button type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a onclick='return confirm('Are you sure, you want to delete it?')' href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button></td>
-                                    <td><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button</td>
+                                    <td><?php echo $amount; ?></td>
+                                    <td><button type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button></td>
+                                    <td></td>
                                 </tr>
 
                             <?php }

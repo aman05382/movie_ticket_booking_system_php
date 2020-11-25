@@ -21,7 +21,7 @@ $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecks
 if ($isValidChecksum == "TRUE") {
 	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
-		echo "<b>Transaction status is su</b>" . "<br/>";
+		echo "<b>Transaction status is success</b>" . "<br/>";
 
 
 		session_start();
@@ -49,10 +49,11 @@ if ($isValidChecksum == "TRUE") {
 			$t3 = $_SESSION['BOOKING_TYPE'];
 			$t4 = $_SESSION['BOOKING_DATE'];
 			$t5 = $_SESSION['BOOKING_TIME'];
-			$t10 = $_POST['ORDERID'];
+			$t10 = $_POST['TXNAMOUNT'];
+			$t11 = $_POST['ORDERID'];
 
-			$qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `ORDERID`)VALUES 
-				('$t1','$t2','$t3','$t4','$t5','$t6','$t7','$t8','$t9','$t10')";
+			$qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`,`amount`, `ORDERID`)VALUES 
+				('$t1','$t2','$t3','$t4','$t5','$t6','$t7','$t8','$t9','$t10','$t11')";
 
 			// echo "$payment";
 			$rs = mysqli_query($conn, $qry);
@@ -77,3 +78,4 @@ if ($isValidChecksum == "TRUE") {
 		}
 	}
 }
+?>
