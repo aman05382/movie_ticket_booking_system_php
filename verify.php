@@ -16,7 +16,7 @@ $order = "ARVR" . rand(10000, 99999999);
 $cust  = "CUST" . rand(1000, 999999);
 
 //sessions
-$_SESSION['ORDERID'] = $order;
+// $_SESSION['ORDERID'] = $order;
 
 
 //conditions
