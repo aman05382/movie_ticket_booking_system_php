@@ -1,16 +1,5 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cinema_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include "config.php";
 
 if (isset($_POST['submit'])) {
     $fname = $_POST['fName'];
@@ -30,19 +19,11 @@ if (isset($_POST['submit'])) {
     $qry = "INSERT INTO `bookingtable`(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`,`amount`, `ORDERID`) VALUES  
 			('$movieid', '$theatre', '$type', '$date', '$time', '$fname', '$lname', '$mobile','$email', '$amount' ,'$order')";
 
-
-    $rs = mysqli_query($conn, $qry);
-
-    // $payment = "INSERT INTO `payment`(`ORDERID`, `MID`, `TXNID`, `TXNAMOUNT`, `PAYMENTMODE`, `CURRENCY`, `TXNDATE`, `STATUS`, `RESPCODE`, `RESPMSG`, `GATEWAYNAME`, `BANKTXNID`, `BANKNAME`, `CHECKSUMHASH`) VALUES 
-    // ('$order', NULL, NULL, '$amount', 'CASH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+    $rs = mysqli_query($con, $qry);
 
     if ($rs) {
-        // if (mysqli_query($conn, $payment)) {
-        //     echo "Success";
-        // } else {
-        //     echo "no";
-        // }
-        header('Location: add.php');
+        echo "<script>alert('Sussessfully Submitted');
+              window.location.href='add.php';</script>";
     }
 } else {
     echo "error" . mysqli_error($conn);

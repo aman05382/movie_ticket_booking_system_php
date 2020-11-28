@@ -13,10 +13,10 @@
 <body>
 <?php
 
-$link = mysqli_connect("localhost", "root", "", "cinema_db");
+include "config.php";
 $id = $_GET['id']; // get id through query string
 $setting = "select * from bookingtable where bookingID='$id'";
-$qry = mysqli_query($link, $setting); // select query
+$qry = mysqli_query($con, $setting); // select query
 
 // while($row = mysqli_fetch_array($qry)){
 //     $First_Name = $row['bookingFName'];
@@ -34,10 +34,10 @@ if (isset($_POST['update'])) // when click on Update button
     $phone = $_POST['number'];
     $email = $_POST['email'];
 
-    $edit = mysqli_query($link, "update bookingtable set bookingFName='$firstname', bookingLName='$lastname',bookingPNumber='$phone',bookingEmail='$email' where bookingID='$id'");
+    $edit = mysqli_query($con, "update bookingtable set bookingFName='$firstname', bookingLName='$lastname',bookingPNumber='$phone',bookingEmail='$email' where bookingID='$id'");
 
     if ($edit) {
-        mysqli_close($link); // Close connection
+        mysqli_close($con); // Close connection
         header("location:view.php"); // redirects to all records page
         exit;
     } else {

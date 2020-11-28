@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Contact Us</title>
     <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="_.js "></script>
 </head>
 
 <body>
     <?php
-    $link = mysqli_connect("localhost", "root", "", "cinema_db");
+    include "connection.php";
     ?>
     <header></header>
     <div class="contact-us-container">
@@ -37,7 +38,11 @@
                                         '" . $_POST["lName"] . "',
                                         '" . $_POST["eMail"] . "',
                                         '" . $_POST["feedback"] . "')";
-                    mysqli_query($link, $insert_query);
+                    $add = mysqli_query($con, $insert_query);
+
+                    if ($add) {
+                        echo "<script>alert('Succesfully Submitted');</script>";
+                    }
                 }
                 ?>
             </form>

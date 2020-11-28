@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>ARVR Cinema</title>
     <link rel="icon" type="image/png" href="img/logo.png">
-    <!-- <script src="_.js "></script> -->
+    <script src="_.js "></script>
 </head>
 
 <body>
     <?php
-    $link = mysqli_connect("localhost", "root", "", "cinema_db");
+    include "connection.php";
     $sql = "SELECT * FROM movieTable";
     ?>
     <header></header>
@@ -25,7 +25,7 @@
         <div class="movies-container">
 
             <?php
-            if ($result = mysqli_query($link, $sql)) {
+            if ($result = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
                     for ($i = 0; $i <= 5; $i++) {
                         $row = mysqli_fetch_array($result);
@@ -42,11 +42,11 @@
                     echo '<h4 class="no-annot">No Booking to our movies right now</h4>';
                 }
             } else {
-                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
             }
 
             // Close connection
-            mysqli_close($link);
+            mysqli_close($con);
             ?>
         </div>
     </div>

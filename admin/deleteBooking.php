@@ -1,10 +1,10 @@
 <?php 
     $id = $_GET['id'];
-    $link = mysqli_connect("localhost", "root", "", "cinema_db");
+    include "config.php";
 
     $sql = "DELETE FROM bookingTable WHERE bookingID = $id"; 
 
-    if ($link->query($sql) === TRUE) {
+    if ($con->query($sql) === TRUE) {
         header('Location: view.php');
         exit;
     } else {

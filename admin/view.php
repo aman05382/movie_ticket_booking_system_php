@@ -67,10 +67,6 @@ if (isset($_POST['but_logout'])) {
                         </tr>
                         <tbody>
                             <?php
-                            $host = "localhost"; /* Host name */
-                            $user = "root"; /* User */
-                            $password = ""; /* Password */
-                            $dbname = "cinema_db"; /* Database name */
 
                             $con = mysqli_connect($host, $user, $password, $dbname);
                             $select = "SELECT * FROM `bookingtable`";
@@ -103,7 +99,7 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                     <td><?php echo $amount; ?></td>
-                                    <td><button type="submit" onclick="" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button></td>
+                                    <td><button type="submit" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button></td>
                                     <td></td>
                                 </tr>
 

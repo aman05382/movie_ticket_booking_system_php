@@ -2,10 +2,13 @@
 <html lang="en">
 <?php
 $id = $_GET['id'];
-$link = mysqli_connect("localhost", "root", "", "cinema_db");
-
+//conditions
+if ((!$_GET['id'])) {
+    echo "<script>alert('You are Not Suppose to come Here Directly');window.location.href='index.php';</script>";
+}
+include "connection.php";
 $movieQuery = "SELECT * FROM movieTable WHERE movieID = $id";
-$movieImageById = mysqli_query($link, $movieQuery);
+$movieImageById = mysqli_query($con, $movieQuery);
 $row = mysqli_fetch_array($movieImageById);
 ?>
 
@@ -17,6 +20,7 @@ $row = mysqli_fetch_array($movieImageById);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Book <?php echo $row['movieTitle']; ?> Now</title>
     <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="_.js "></script>
 </head>
 
 <body style="background-color:#6e5a11;">

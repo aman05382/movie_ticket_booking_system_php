@@ -95,11 +95,6 @@ if (isset($_POST['but_logout'])) {
                             <input placeholder="Phone Number" type="text" name="pNumber" required>
                             <input placeholder="email" type="email" name="email" required>
                             <input placeholder="Movie ID" type="text" name="movie_id">
-
-                            <!-- <select name="type" name="payment" required>
-                                <option value="" disabled selected>PAYMENT</option>
-                                <option value="CASH">CASH</option>
-                            </select> -->
                             
                             <input placeholder="Amount" type="text" name="cash" required>
 

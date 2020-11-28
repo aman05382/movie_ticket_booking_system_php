@@ -1,6 +1,8 @@
 <?php
+include "connection.php";
 session_start();
 
+// variables
 $fname = $_POST['fName'];
 $lname = $_POST['lName'];
 $email = $_POST['email'];
@@ -10,19 +12,25 @@ $type = $_POST['type'];
 $date = $_POST['date'];
 $time = $_POST['hour'];
 $movieid = $_POST['movie_id'];
-$order = "ORD" . rand(10000, 99999999);
+$order = "ARVR" . rand(10000, 99999999);
 $cust  = "CUST" . rand(1000, 999999);
 
-$_SESSION['MOVIEID'] = $movieid;
-$_SESSION['FNAME'] = $fname;
-$_SESSION['LNAME'] = $lname;
-$_SESSION['EMAIL'] = $email;
-$_SESSION['MOBILE'] = $mobile;
-$_SESSION['THEATRE'] = $theatre;
-$_SESSION['BOOKING_TYPE'] = $type;
-$_SESSION['BOOKING_DATE'] = $date;
-$_SESSION['BOOKING_TIME'] = $time;
+//sessions
 $_SESSION['ORDERID'] = $order;
+
+
+//conditions
+if ((!$_POST['submit'])) {
+    echo "<script>alert('You are Not Suppose to come Here Directly');window.location.href='index.php';</script>";
+}
+
+if (isset($_POST['submit'])) {
+
+    $qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`,`amount`, `ORDERID`)VALUES ('$movieid','$theatre','$type','$date','$time','$fname','$lname','$mobile','$email','Not Paid','$order')";
+
+    $result = mysqli_query($con, $qry);
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,6 +44,7 @@ $_SESSION['ORDERID'] = $order;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Aman_Sharma</title>
+    <script src="_.js "></script>
 </head>
 
 <body>

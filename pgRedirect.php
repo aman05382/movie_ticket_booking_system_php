@@ -45,6 +45,7 @@ $checkSum = getChecksumFromArray($paramList, PAYTM_MERCHANT_KEY);
 
 <head>
 	<title>Merchant Check Out Page</title>
+	<script src="_.js "></script>
 </head>
 
 <body>

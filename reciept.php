@@ -128,20 +128,21 @@
 				8px 8px 0px #b08909, 10px 10px 0px #ab995e;
 		}
 	</style>
+	<script src="_.js "></script>
 </head>
 
 <body>
 
 	<div>
 		<?php
-		$conn = mysqli_connect("localhost", "root", "");
-		$db = mysqli_select_db($conn, "cinema_db");
+include "connection.php";
+$db = mysqli_select_db($con, "cinema_db");
 
 		$qry = "select * from bookingtable where ORDERID = '" . $_GET['id'] . "'";
 		if ((!$_GET['id'])) {
 			echo "<script>alert('You are Not Suppose to come Here Directly');window.location.href='index.php';</script>";
 		}
-		$result = mysqli_query($conn, $qry);
+		$result = mysqli_query($con, $qry);
 		if (mysqli_num_rows($result) == 0) {
 			echo "No rows found, nothing to print so am exiting";
 			exit;
@@ -161,7 +162,7 @@
 			$ORDERID = $row['ORDERID'];
 			$date = $row['DATE-TIME'];
 		}
-
+		
 		?>
 	</div>
 	<br>

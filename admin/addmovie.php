@@ -30,11 +30,10 @@ if (isset($_POST['but_logout'])) {
 
 <body>
     <?php
-    $link = mysqli_connect("localhost", "root", "", "cinema_db");
     $sql = "SELECT * FROM bookingTable";
-    $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
-    $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbackTable"));
-    $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movieTable"));
+    $bookingsNo = mysqli_num_rows(mysqli_query($con, $sql));
+    $messagesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM feedbackTable"));
+    $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movieTable"));
     ?>
     
     <?php include('header.php'); ?>
@@ -89,7 +88,11 @@ if (isset($_POST['but_logout'])) {
                                             '" . $_POST["mainhall"] . "',
                                             '" . $_POST["viphall"] . "',
                                             '" . $_POST["privatehall"] . "')";
-                            mysqli_query($link, $insert_query);
+                           $rs= mysqli_query($con, $insert_query);
+                           if ($rs) {
+                            echo "<script>alert('Sussessfully Submitted');
+                                  window.location.href='addmovie.php';</script>";
+                        }
                         }
                         ?>
                     </form>

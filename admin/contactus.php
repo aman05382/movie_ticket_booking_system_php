@@ -46,12 +46,12 @@
                         </tr>
                         <tbody>
                             <?php
+                            include "config.php";
                             $host = "localhost"; /* Host name */
                             $user = "root"; /* User */
                             $password = ""; /* Password */
                             $dbname = "cinema_db"; /* Database name */
 
-                            $con = mysqli_connect($host, $user, $password, $dbname);
                             $select = "SELECT * FROM `feedbacktable`";
                             $run = mysqli_query($con, $select);
                             while ($row = mysqli_fetch_array($run)) {

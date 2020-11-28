@@ -25,12 +25,11 @@ if (!isset($_SESSION['uname'])) {
 
 <body>
     <?php
-    $link = mysqli_connect("localhost", "root", "", "cinema_db");
     $sql = "SELECT * FROM bookingtable";
-    $bookingsNo = mysqli_num_rows(mysqli_query($link, $sql));
-    $messagesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM feedbacktable"));
-    $moviesNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM movietable"));
-    $userNo = mysqli_num_rows(mysqli_query($link, "SELECT * FROM users"));
+    $bookingsNo = mysqli_num_rows(mysqli_query($con, $sql));
+    $messagesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM feedbacktable"));
+    $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movietable"));
+    $userNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM users"));
     ?>
 
     <?php include('header.php'); ?>
@@ -42,7 +41,7 @@ if (!isset($_SESSION['uname'])) {
             <div class="admin-section-column">
                 <div class="admin-section-panel admin-section-stats">
                     <div class="admin-section-stats-panel">
-                        <i class="fa fa-ticket-alt"  style="background-color: #cf4545"></i>
+                        <i class="fa fa-ticket-alt" style="background-color: #cf4545"></i>
                         <h2 style="color: #cf4545"><?php echo $bookingsNo ?></h2>
                         <h3>Bookings</h3>
                     </div>
@@ -84,12 +83,7 @@ if (!isset($_SESSION['uname'])) {
                             </tr>
                             <tbody>
                                 <?php
-                                $host = "localhost"; /* Host name */
-                                $user = "root"; /* User */
-                                $password = ""; /* Password */
-                                $dbname = "cinema_db"; /* Database name */
 
-                                $con = mysqli_connect($host, $user, $password, $dbname);
                                 $select = "SELECT * FROM `bookingtable`";
                                 $run = mysqli_query($con, $select);
                                 while ($row = mysqli_fetch_array($run)) {
@@ -103,7 +97,7 @@ if (!isset($_SESSION['uname'])) {
                                     $theatre = $row['bookingTheatre'];
                                     $type = $row['bookingType'];
                                     $ORDERID = $row['ORDERID'];
-                                    
+
 
 
                                 ?>
@@ -127,9 +121,9 @@ if (!isset($_SESSION['uname'])) {
                         </table>
                     </div>
                 </div>
-                
+
             </div>
-            
+
         </div>
     </div>
 
