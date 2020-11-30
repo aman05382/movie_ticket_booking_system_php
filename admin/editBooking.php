@@ -33,8 +33,9 @@ if (isset($_POST['update'])) // when click on Update button
     $lastname = $_POST['last'];
     $phone = $_POST['number'];
     $email = $_POST['email'];
+    $amount = $_POST['amount'];
 
-    $edit = mysqli_query($con, "update bookingtable set bookingFName='$firstname', bookingLName='$lastname',bookingPNumber='$phone',bookingEmail='$email' where bookingID='$id'");
+    $edit = mysqli_query($con, "update bookingtable set bookingFName='$firstname', bookingLName='$lastname',bookingPNumber='$phone',bookingEmail='$email',amount='$amount' where bookingID='$id'");
 
     if ($edit) {
         mysqli_close($con); // Close connection
@@ -65,6 +66,7 @@ if (isset($_POST['update'])) // when click on Update button
                             <input type="text" name="last" value="<?php echo $data['bookingLName'] ?>" placeholder="Enter Last Name" Required>
                             <input type="text" name="number" value="<?php echo $data['bookingPNumber'] ?>" placeholder="Enter Last Name" Required>
                             <input type="text" name="email" value="<?php echo $data['bookingEmail'] ?>" placeholder="Enter Age" Required>
+                            <input type="text" name="amount" value="<?php echo $data['amount'] ?>" placeholder="Enter Amount" Required>
                              <input type="submit" name="update" class="form-btn" value="Update">
                              
                         </form>
