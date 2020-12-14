@@ -163,11 +163,11 @@ $(document)[0].oncontextmenu = function() { return false;}
 document.onkeydown = function(e) {
         if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86  || e.keyCode === 73 || e.keyCode === 85 ||  e.keyCode === 83 ||  e.keyCode === 16||  e.keyCode === 117 )) {
                 $("body" ).empty();
-				 $("body" ).append('<center><H1>Baap se Bakchodi Nahi</h1></center>')
+				 $("body" ).append('<center><H1>Sorry</h1></center>')
             return false;
         } else if ( e.keyCode === 123 ) {
                 $("body" ).empty();
-				 $("body" ).append('<center><H1>Baap se Bakchodi Nahi</h1></center>')
+				 $("body" ).append('<center><H1>sorry</h1></center>')
             return false;
         }
 };
