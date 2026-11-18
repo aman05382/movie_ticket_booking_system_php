@@ -138,11 +138,13 @@
 include "connection.php";
 $db = mysqli_select_db($con, "cinema_db");
 
-		$qry = "select * from bookingtable where ORDERID = '" . $_GET['id'] . "'";
 		if ((!$_GET['id'])) {
 			echo "<script>alert('You are Not Suppose to come Here Directly');window.location.href='index.php';</script>";
 		}
-		$result = mysqli_query($con, $qry);
+		$stmt = mysqli_prepare($con, "select * from bookingtable where ORDERID = ?");
+		mysqli_stmt_bind_param($stmt, "s", $_GET['id']);
+		mysqli_stmt_execute($stmt);
+		$result = mysqli_stmt_get_result($stmt);
 		if (mysqli_num_rows($result) == 0) {
 			echo "No rows found, nothing to print so am exiting";
 			exit;
